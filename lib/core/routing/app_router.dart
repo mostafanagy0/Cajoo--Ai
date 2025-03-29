@@ -1,5 +1,6 @@
 import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/feature/auth/presentation/views/login_view.dart';
+import 'package:cajoo/feature/auth/presentation/views/sign_view.dart';
 import 'package:cajoo/feature/onbording/presentation/views/onbording_view.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnbordingView());
       case Routes.loginView:
         return MaterialPageRoute(builder: (_) => const LoginView());
+      case Routes.signUpView:
+        return MaterialPageRoute(builder: (_) => const SignUpView());
 
       default:
         return MaterialPageRoute(

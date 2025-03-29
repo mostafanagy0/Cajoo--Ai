@@ -12,9 +12,19 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColor.primaryColor,
   );
-  static TextStyle font14Weight500 = const TextStyle(
+  static TextStyle font14Weight400 = const TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,
     color: AppColor.primaryColor,
+  );
+  static TextStyle font16Weight500 = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+  static TextStyle font34Weight500Semibold = const TextStyle(
+    fontSize: 34,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
   );
 }

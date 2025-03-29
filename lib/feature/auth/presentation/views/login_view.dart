@@ -1,3 +1,5 @@
+import 'package:cajoo/core/theming/colors.dart';
+import 'package:cajoo/feature/auth/presentation/widget/login_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -5,6 +7,11 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.primaryColor,
+        body: LoginViewBody(),
+      ),
+    );
   }
 }

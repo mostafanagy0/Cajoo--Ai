@@ -16,7 +16,7 @@ class CustomNavBar extends StatelessWidget {
           alignment: AlignmentDirectional.centerEnd,
           child: Text(
             'Skip',
-            style: TextStyles.font14Weight500,
+            style: TextStyles.font14Weight400,
           )),
     );
   }
