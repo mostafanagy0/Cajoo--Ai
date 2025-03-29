@@ -1,3 +1,4 @@
+import 'package:cajoo/feature/onbording/presentation/widgets/onbording_view_body.dart';
 import 'package:flutter/material.dart';
 
 class OnbordingView extends StatelessWidget {
@@ -5,6 +6,10 @@ class OnbordingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const SafeArea(
+      child: Scaffold(
+        body: OnbordingViewBody(),
+      ),
+    );
   }
 }
