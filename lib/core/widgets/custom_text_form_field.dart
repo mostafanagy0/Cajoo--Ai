@@ -1,4 +1,5 @@
 import 'package:cajoo/core/theming/colors.dart';
+import 'package:cajoo/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormFeild extends StatelessWidget {
@@ -23,15 +24,16 @@ class CustomTextFormFeild extends StatelessWidget {
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
-        fillColor: const Color(0xfff5f9fe),
-        filled: true,
-        hintText: hintText,
-
-        // labelStyle: TextStyles.poppins500style18,
-        border: getBorderStyle(),
-        focusedBorder: getBorderStyle(),
-        enabledBorder: getBorderStyle(),
-      ),
+          fillColor: const Color(0xfff5f9fe),
+          filled: true,
+          hintText: hintText,
+          hintStyle: TextStyles.font16Weight400,
+          border: getBorderStyle(),
+          focusedBorder: getBorderStyle(),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(14),
+            borderSide: const BorderSide(color: Colors.transparent), // لون شفاف
+          )),
     );
   }
 }
