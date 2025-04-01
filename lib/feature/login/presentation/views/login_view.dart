@@ -1,5 +1,5 @@
 import 'package:cajoo/core/theming/colors.dart';
-import 'package:cajoo/feature/auth/presentation/widget/login_view_body.dart';
+import 'package:cajoo/feature/login/presentation/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {

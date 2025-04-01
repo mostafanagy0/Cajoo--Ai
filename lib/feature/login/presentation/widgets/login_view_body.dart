@@ -2,9 +2,9 @@ import 'package:cajoo/core/helpers/extention.dart';
 import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/widgets/custom_buttom.dart';
-import 'package:cajoo/core/widgets/custom_text_form_field.dart';
-import 'package:cajoo/feature/auth/presentation/widget/forget_password_widget.dart';
-import 'package:cajoo/feature/auth/presentation/widget/have_account_widget.dart';
+import 'package:cajoo/feature/login/presentation/widgets/forget_password_widget.dart';
+import 'package:cajoo/feature/login/presentation/widgets/login_form.dart.dart';
+import 'package:cajoo/feature/signup/presentation/widget/have_account_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -41,17 +41,9 @@ class LoginViewBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Column(
                 children: [
-                  const SizedBox(height: 50),
-                  const CustomTextFormFeild(
-                    hintText: 'Email',
-                  ),
-                  const SizedBox(height: 16),
-                  const CustomTextFormFeild(
-                    hintText: 'Password',
-                  ),
+                  const LoginForm(),
                   const SizedBox(height: 8),
                   const ForgetPasswordWidget(),
-                  const SizedBox(height: 8),
                   const SizedBox(height: 100),
                   const CustomButtom(
                     text: 'Login',

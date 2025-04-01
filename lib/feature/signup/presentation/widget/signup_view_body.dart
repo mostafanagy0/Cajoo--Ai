@@ -2,9 +2,9 @@ import 'package:cajoo/core/helpers/extention.dart';
 import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/widgets/custom_buttom.dart';
-import 'package:cajoo/core/widgets/custom_text_form_field.dart';
-import 'package:cajoo/feature/auth/presentation/widget/have_account_widget.dart';
-import 'package:cajoo/feature/auth/presentation/widget/terms_and_conditions_widget.dart';
+import 'package:cajoo/feature/signup/presentation/widget/have_account_widget.dart';
+import 'package:cajoo/feature/signup/presentation/widget/signup_form.dart';
+import 'package:cajoo/feature/signup/presentation/widget/terms_and_conditions_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignupViewBody extends StatelessWidget {
@@ -39,18 +39,7 @@ class SignupViewBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Column(
                 children: [
-                  const SizedBox(height: 50),
-                  const CustomTextFormFeild(
-                    hintText: 'Name',
-                  ),
-                  const SizedBox(height: 16),
-                  const CustomTextFormFeild(
-                    hintText: 'Email',
-                  ),
-                  const SizedBox(height: 16),
-                  const CustomTextFormFeild(
-                    hintText: 'Password',
-                  ),
+                  const SignupForm(),
                   const SizedBox(height: 8),
                   TermsAndConditionsWidget(
                     onChecked: (p0) {},

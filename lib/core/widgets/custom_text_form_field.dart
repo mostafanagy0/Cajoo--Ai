@@ -7,10 +7,13 @@ class CustomTextFormFeild extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.onChanged,
-      this.onFieldSubmitted});
+      this.onFieldSubmitted,
+      this.suffixIcon, this.isObscureText});
   final String hintText;
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
+  final Widget? suffixIcon;
+  final bool? isObscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -23,10 +26,16 @@ class CustomTextFormFeild extends StatelessWidget {
       },
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
+      obscureText: isObscureText ?? false,
+      
       decoration: InputDecoration(
           fillColor: const Color(0xfff5f9fe),
           filled: true,
           hintText: hintText,
+          suffixIcon: suffixIcon,
+          
+            
+
           hintStyle: TextStyles.font16Weight400,
           border: getBorderStyle(),
           focusedBorder: getBorderStyle(),
