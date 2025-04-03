@@ -3,14 +3,13 @@ import 'package:cajoo/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtom extends StatelessWidget {
-  const CustomButtom({super.key, required this.text});
+  const CustomButtom({super.key, required this.text, this.onTap});
   final String text;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Handle button tap
-      },
+      onTap: onTap,
       child: Container(
         height: 60,
         width: double.infinity,

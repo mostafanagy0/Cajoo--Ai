@@ -41,7 +41,7 @@ class CustomTextFormFeild extends StatelessWidget {
           focusedBorder: getBorderStyle(),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
-            borderSide: const BorderSide(color: Colors.transparent), // لون شفاف
+            borderSide: const BorderSide(color: Colors.transparent), 
           )),
     );
   }

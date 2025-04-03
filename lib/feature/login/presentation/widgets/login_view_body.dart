@@ -45,7 +45,10 @@ class LoginViewBody extends StatelessWidget {
                   const SizedBox(height: 8),
                   const ForgetPasswordWidget(),
                   const SizedBox(height: 100),
-                  const CustomButtom(
+                  CustomButtom(
+                    onTap: () {
+                      context.pushNamed(Routes.mainView);
+                    },
                     text: 'Login',
                   ),
                   const SizedBox(height: 12),
