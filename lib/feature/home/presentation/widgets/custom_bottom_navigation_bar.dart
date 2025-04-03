@@ -21,7 +21,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Widget build(BuildContext context) {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(), // عشان نعمل notch للزرار الدائري
-      notchMargin: 8.0,
+      notchMargin: 10,
+      elevation: 20,
+      shadowColor: Colors.black,
+      color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
