@@ -2,10 +2,13 @@ import 'package:cajoo/core/helpers/extention.dart';
 import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/widgets/custom_buttom.dart';
+import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/login/presentation/widgets/forget_password_widget.dart';
+import 'package:cajoo/feature/login/presentation/widgets/loding_bloc_listener.dart';
 import 'package:cajoo/feature/login/presentation/widgets/login_form.dart.dart';
 import 'package:cajoo/feature/signup/presentation/widget/have_account_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({
@@ -47,7 +50,7 @@ class LoginViewBody extends StatelessWidget {
                   const SizedBox(height: 100),
                   CustomButtom(
                     onTap: () {
-                      context.pushNamed(Routes.mainView);
+                      validateThenDoLogin(context);
                     },
                     text: 'Login',
                   ),
@@ -58,7 +61,8 @@ class LoginViewBody extends StatelessWidget {
                     onTap: () {
                       context.pushNamed(Routes.signUpView);
                     },
-                  )
+                  ),
+                  const LoginBlocListener(),
                 ],
               ),
             ),
@@ -66,5 +70,11 @@ class LoginViewBody extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void validateThenDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoadingState();
+    }
   }
 }
