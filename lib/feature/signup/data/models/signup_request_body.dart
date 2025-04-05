@@ -1,3 +1,5 @@
+
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'signup_request_body.g.dart';
