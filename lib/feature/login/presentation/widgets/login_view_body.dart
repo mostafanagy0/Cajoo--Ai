@@ -74,7 +74,7 @@ class LoginViewBody extends StatelessWidget {
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoadingState();
+      context.read<LoginCubit>().emitLoginState();
     }
   }
 }

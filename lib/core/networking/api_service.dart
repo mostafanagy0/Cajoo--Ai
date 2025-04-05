@@ -1,6 +1,8 @@
 import 'package:cajoo/core/networking/api_constants.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/models/login_response.dart';
+import 'package:cajoo/feature/signup/data/models/signup_request_body.dart';
+import 'package:cajoo/feature/signup/data/models/signup_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -13,5 +15,10 @@ abstract class ApiService {
   @POST(ApiConstants.login)
   Future<LoginResponse> login(
     @Body() LoginRequistBody loginRequistBody,
+  );
+
+  @POST(ApiConstants.signup)
+  Future<SignupResponse> signup(
+    @Body() SignupRequestBody signupRequestBody,
   );
 }

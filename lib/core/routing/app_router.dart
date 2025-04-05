@@ -6,6 +6,7 @@ import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/login/presentation/views/login_view.dart';
 import 'package:cajoo/feature/onbording/presentation/views/onbording_view.dart';
 import 'package:cajoo/feature/profile/presentation/views/profile_view.dart';
+import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:cajoo/feature/signup/presentation/views/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,11 @@ class AppRouter {
                   child: const LoginView(),
                 ));
       case Routes.signUpView:
-        return MaterialPageRoute(builder: (_) => const SignUpView());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<SignupCubit>(),
+                  child: const SignUpView(),
+                ));
       case Routes.homeview:
         return MaterialPageRoute(builder: (_) => const HomeView());
       case Routes.profileview:

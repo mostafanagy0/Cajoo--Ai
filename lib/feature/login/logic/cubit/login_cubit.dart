@@ -11,7 +11,7 @@ class LoginCubit extends Cubit<LoginState> {
   final formKey = GlobalKey<FormState>();
   final LoginRepoImp loginRepoImp;
 
-  void emitLoadingState() async {
+  void emitLoginState() async {
     if (!formKey.currentState!.validate()) {
       return;
     }
