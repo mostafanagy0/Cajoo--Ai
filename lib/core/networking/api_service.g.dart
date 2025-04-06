@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://cashwe-aged-firefly-6248.fly.dev/api/vi/';
+    baseUrl ??= 'https://cashwe-aged-firefly-6248.fly.dev/api/v1/';
   }
 
   final Dio _dio;
@@ -37,7 +37,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'auth/login',
+          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/login',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -71,7 +71,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'auth/register',
+          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/register',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -84,6 +84,41 @@ class _ApiService implements ApiService {
     late SignupResponse _value;
     try {
       _value = SignupResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<String> forgetPassword(
+      ForgetPassworsRequestModel forgetPassworsRequestModel) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(forgetPassworsRequestModel.toJson());
+    final _options = _setStreamType<String>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/forgetPassword',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<String>(_options);
+    late String _value;
+    try {
+      _value = _result.data!;
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

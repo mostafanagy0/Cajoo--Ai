@@ -1,3 +1,5 @@
+import 'package:cajoo/core/helpers/extention.dart';
+import 'package:cajoo/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordWidget extends StatelessWidget {
@@ -7,11 +9,16 @@ class ForgetPasswordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Text('Forget Password?'),
-      ],
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(Routes.forgetPassword);
+      },
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text('Forget Password?'),
+        ],
+      ),
     );
   }
 }

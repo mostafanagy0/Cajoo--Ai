@@ -12,6 +12,11 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColor.primaryColor,
   );
+  static TextStyle font32Weight600 = const TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w600,
+    color: AppColor.primaryColor,
+  );
   static TextStyle font14Weight400 = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,

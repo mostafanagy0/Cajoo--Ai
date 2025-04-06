@@ -5,4 +5,6 @@ class Routes {
   static const String homeview = '/homeview';
   static const String profileview = '/profile';
   static const String mainView = '/main';
+  static const String forgetPassword = '/forgetpassword';
+  static const String enterOtp = '/enterotp';
 }
