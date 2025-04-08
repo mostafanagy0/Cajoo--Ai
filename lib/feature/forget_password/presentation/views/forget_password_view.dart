@@ -2,7 +2,7 @@ import 'package:cajoo/core/helpers/app_regex.dart';
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/widgets/custom_buttom.dart';
 import 'package:cajoo/core/widgets/custom_text_form_field.dart';
-import 'package:cajoo/feature/forget_password/logic/cubit/forgetpassword_cubit.dart';
+import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forgetpassword_cubit.dart';
 import 'package:cajoo/feature/forget_password/presentation/widgets/forget_password_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

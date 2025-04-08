@@ -1,8 +1,8 @@
 import 'package:cajoo/core/helpers/extention.dart';
 import 'package:cajoo/core/networking/api_error_model.dart';
 import 'package:cajoo/core/theming/colors.dart';
-import 'package:cajoo/feature/forget_password/logic/cubit/forget_password_state.dart';
-import 'package:cajoo/feature/forget_password/logic/cubit/forgetpassword_cubit.dart';
+import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forget_password_state.dart';
+import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forgetpassword_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

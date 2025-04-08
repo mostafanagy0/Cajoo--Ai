@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cajoo/feature/forget_password/data/models/forget_passwors_request_model.dart';
 import 'package:cajoo/feature/forget_password/data/repos/forget_password_repo_imp.dart';
-import 'package:cajoo/feature/forget_password/logic/cubit/forget_password_state.dart';
+import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forget_password_state.dart';
 import 'package:flutter/material.dart';
 
 class ForgetpasswordCubit extends Cubit<ForgetPasswordState> {
@@ -17,10 +17,11 @@ class ForgetpasswordCubit extends Cubit<ForgetPasswordState> {
         ForgetPassworsRequestModel(email: emailController.text));
     result.fold(
       (failure) {
-       emit(ForgetPasswordState.error(error: failure.message ?? "Unknown Error"));
+        emit(ForgetPasswordState.error(
+            error: failure.message ?? "Unknown Error"));
       },
       (success) {
-        emit(ForgetPasswordState.success(success));
+        emit(ForgetPasswordState.success(success.message));
         emailController.clear();
       },
     );

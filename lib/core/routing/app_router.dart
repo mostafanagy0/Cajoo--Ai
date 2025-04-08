@@ -1,7 +1,8 @@
 import 'package:cajoo/core/di/dependancy_ingection.dart';
 import 'package:cajoo/core/routing/routes.dart';
-import 'package:cajoo/feature/forget_password/logic/cubit/forgetpassword_cubit.dart';
-import 'package:cajoo/feature/forget_password/presentation/views/enter_otp_screen.dart';
+import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forgetpassword_cubit.dart';
+import 'package:cajoo/feature/forget_password/logic/verify_reset_code/cubit/verify_reset_code_cubit.dart';
+import 'package:cajoo/feature/forget_password/presentation/views/enter_otp_view.dart';
 import 'package:cajoo/feature/forget_password/presentation/views/forget_password_view.dart';
 import 'package:cajoo/feature/home/presentation/views/home_view.dart';
 import 'package:cajoo/feature/home/presentation/views/main_view.dart';
@@ -42,7 +43,11 @@ class AppRouter {
       case Routes.profileview:
         return MaterialPageRoute(builder: (_) => const ProfileView());
       case Routes.enterOtp:
-        return MaterialPageRoute(builder: (_) => const EnterOtpview());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<VerifyResetCodeCubit>(),
+                  child: EnterOtpview(),
+                ));
       case Routes.mainView:
         return MaterialPageRoute(builder: (_) => const MainView());
 
