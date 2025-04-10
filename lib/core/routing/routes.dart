@@ -7,4 +7,5 @@ class Routes {
   static const String mainView = '/main';
   static const String forgetPassword = '/forgetpassword';
   static const String enterOtp = '/enterotp';
+  static const String resetpassword = '/resetpassword';
 }

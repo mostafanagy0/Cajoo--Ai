@@ -1,3 +1,4 @@
+import 'package:cajoo/core/networking/api_service.dart';
 import 'package:cajoo/core/networking/dio_factory.dart';
 import 'package:cajoo/feature/forget_password/data/repos/forget_password_repo_imp.dart';
 import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forgetpassword_cubit.dart';
@@ -14,7 +15,7 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
-  //getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
+  getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 
   // login
   getIt.registerLazySingleton<LoginRepoImp>(
@@ -33,8 +34,7 @@ Future<void> setupGetIt() async {
   getIt
       .registerFactory<ForgetpasswordCubit>(() => ForgetpasswordCubit(getIt()));
   // verify reset code
-  getIt.registerLazySingleton<ForgetPasswordRepoImp>(
-      () => ForgetPasswordRepoImp(apiService: getIt()));
+
   getIt.registerFactory<VerifyResetCodeCubit>(
       () => VerifyResetCodeCubit(getIt()));
 }
