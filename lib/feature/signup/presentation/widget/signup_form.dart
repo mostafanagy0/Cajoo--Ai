@@ -66,6 +66,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
             isObscureText: isObscureText,
           ),
+          const SizedBox(height: 16),
           CustomTextFormFeild(
             controller: signupCubit.confirmPasswordController,
             validator: (value) {
