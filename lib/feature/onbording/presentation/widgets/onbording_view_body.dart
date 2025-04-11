@@ -16,6 +16,7 @@ class OnbordingViewBody extends StatefulWidget {
 }
 
 class _OnbordingViewBodyState extends State<OnbordingViewBody> {
+  var currntentPage = 0;
   late PageController controller;
   @override
   void initState() {
@@ -49,8 +50,7 @@ class _OnbordingViewBodyState extends State<OnbordingViewBody> {
               //Navigation bar
               CustomNavBar(
                 onTap: () {
-
-            context.pushReplacementNamed(Routes.loginView) ;
+                  context.pushReplacementNamed(Routes.loginView);
                 },
               ),
               const SizedBox(
@@ -84,6 +84,9 @@ class _OnbordingViewBodyState extends State<OnbordingViewBody> {
               ),
               SmothPageIndicator(
                 controller: controller,
+              ),
+              const SizedBox(
+                height: 16,
               ),
             ],
           ),

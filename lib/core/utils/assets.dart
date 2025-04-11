@@ -77,5 +77,9 @@ class Assets {
   /// Assets for imagesOnbording3
   /// assets/images/onbording3.png
   static const String imagesOnbording3 = "assets/images/onbording3.png";
+
+  /// Assets for imagesSplash
+  /// assets/images/splash.png
+  static const String imagesSplash = "assets/images/splash.png";
 }
 
