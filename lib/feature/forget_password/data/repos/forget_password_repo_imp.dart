@@ -2,6 +2,8 @@ import 'package:cajoo/core/networking/api_error_model.dart';
 import 'package:cajoo/core/networking/api_service.dart';
 import 'package:cajoo/feature/forget_password/data/models/forget_password_response.dart';
 import 'package:cajoo/feature/forget_password/data/models/forget_passwors_request_model.dart';
+import 'package:cajoo/feature/forget_password/data/models/reset_password_request_model.dart';
+import 'package:cajoo/feature/forget_password/data/models/reset_password_response.dart';
 import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_request_model.dart';
 import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_response.dart';
 import 'package:cajoo/feature/forget_password/data/repos/forget_password_repo.dart';
@@ -32,6 +34,19 @@ class ForgetPasswordRepoImp extends ForgetPasswordRepo {
       final response =
           await apiService.verifyResetCode(verefyResetCodeRequestModel);
       return Right(response);
+    } catch (e) {
+      return left(
+          ApiErrorModel(message: "Something went wrong", errorsType: []));
+    }
+  }
+
+  @override
+  Future<Either<ApiErrorModel, ResetPasswordResponse>> resetPassword(
+      ResetPasswordRequestModel resetPasswordRequestModel) async {
+    try {
+      final response =
+          await apiService.resetPassword(resetPasswordRequestModel);
+      return right(response);
     } catch (e) {
       return left(
           ApiErrorModel(message: "Something went wrong", errorsType: []));

@@ -31,7 +31,7 @@ class SignupViewBody extends StatelessWidget {
             height: 70,
           ),
           Container(
-            height: 700,
+            height: 740,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(36),

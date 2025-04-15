@@ -8,4 +8,5 @@ class Routes {
   static const String forgetPassword = '/forgetpassword';
   static const String enterOtp = '/enterotp';
   static const String resetpassword = '/resetpassword';
+  static const String helpandsupport = '/helpandsupport';
 }

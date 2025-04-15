@@ -1,7 +1,6 @@
 import 'package:cajoo/core/theming/styles.dart';
-import 'package:cajoo/core/utils/assets.dart';
-import 'package:cajoo/feature/profile/presentation/widgets/custom_profile_option.dart';
 import 'package:cajoo/feature/profile/presentation/widgets/image_and_name_profile.dart';
+import 'package:cajoo/feature/profile/presentation/widgets/profile_options.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
@@ -21,46 +20,15 @@ class ProfileView extends StatelessWidget {
                 style: TextStyles.font32Weight600.copyWith(fontSize: 18),
               ),
             )),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+        body: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const ImageAndNameProfile(),
-              const SizedBox(
+              ImageAndNameProfile(),
+              SizedBox(
                 height: 8,
               ),
-              CustomProfileOption(
-                icon: Assets.imagesEditeoutline,
-                title: 'Edit Profile',
-                onTap: () {},
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              CustomProfileOption(
-                icon: Assets.imagesIcBaselineHistory,
-                title: 'History',
-                onTap: () {},
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              CustomProfileOption(
-                icon: Assets.imagesHelpOutline,
-                title: 'Help & support',
-                onTap: () {},
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              CustomProfileOption(
-                icon: Assets.imagesLogoutOutline,
-                title: 'Logout',
-                onTap: () {},
-              ),
-              const SizedBox(
-                height: 12,
-              ),
+              ProfileOptions()
             ],
           ),
         ));
