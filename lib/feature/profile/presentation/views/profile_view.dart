@@ -1,5 +1,6 @@
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/feature/profile/presentation/widgets/image_and_name_profile.dart';
+import 'package:cajoo/feature/profile/presentation/widgets/language_option_widget.dart';
 import 'package:cajoo/feature/profile/presentation/widgets/profile_options.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,8 @@ class ProfileView extends StatelessWidget {
               SizedBox(
                 height: 8,
               ),
-              ProfileOptions()
+              ProfileOptions(),
+              LanguageOptionWidget()
             ],
           ),
         ));
