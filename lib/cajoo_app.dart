@@ -9,7 +9,7 @@ class CajooApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: Routes.mainView,
+      initialRoute: Routes.onboarding,
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,5 +1,5 @@
+import 'package:cajoo/core/errors/server_failure.dart';
 import 'package:cajoo/core/helpers/extention.dart';
-import 'package:cajoo/core/networking/api_error_model.dart';
 import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/core/theming/colors.dart';
 import 'package:cajoo/feature/forget_password/logic/reset_password/cubit/reset_password_cubit.dart';
@@ -33,20 +33,15 @@ class ResetPasswordBlocListener extends StatelessWidget {
           context.pop();
           showSuccessMessage(context, resetpassword);
           context.pushReplacementNamed(Routes.loginView);
-        }, error: (apiError) {
-          setupErrorState(
-              context,
-              ApiErrorModel(
-                message: apiError,
-                errorsType: [],
-              ));
+        }, error: (serverFailure) {
+          setupErrorState(context, serverFailure);
         });
       },
       child: const SizedBox.shrink(),
     );
   }
 
-  void setupErrorState(BuildContext context, ApiErrorModel apiError) {
+  void setupErrorState(BuildContext context, ServerFailure serverFailure) {
     context.pop();
     showDialog(
       context: context,
@@ -57,7 +52,7 @@ class ResetPasswordBlocListener extends StatelessWidget {
           size: 32,
         ),
         content: Text(
-          apiError.message ?? "Unexpected error",
+          serverFailure.message,
           style: TextStyles.font16Weight400,
         ),
         actions: [

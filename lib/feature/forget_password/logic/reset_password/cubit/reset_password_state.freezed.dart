@@ -21,7 +21,7 @@ mixin _$ResetPasswordState<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ResetPasswordState<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$ResetPasswordState<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,7 +137,7 @@ class _$ResetPasswordInitialImpl<T> implements _ResetPasswordInitial<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure error) error,
   }) {
     return initial();
   }
@@ -148,7 +148,7 @@ class _$ResetPasswordInitialImpl<T> implements _ResetPasswordInitial<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure error)? error,
   }) {
     return initial?.call();
   }
@@ -159,7 +159,7 @@ class _$ResetPasswordInitialImpl<T> implements _ResetPasswordInitial<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -256,7 +256,7 @@ class _$ResetPasswordLodingImpl<T> implements ResetPasswordLoding<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure error) error,
   }) {
     return loading();
   }
@@ -267,7 +267,7 @@ class _$ResetPasswordLodingImpl<T> implements ResetPasswordLoding<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure error)? error,
   }) {
     return loading?.call();
   }
@@ -278,7 +278,7 @@ class _$ResetPasswordLodingImpl<T> implements ResetPasswordLoding<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -403,7 +403,7 @@ class _$ResetPasswordSuccessImpl<T> implements ResetPasswordSuccess<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure error) error,
   }) {
     return success(message);
   }
@@ -414,7 +414,7 @@ class _$ResetPasswordSuccessImpl<T> implements ResetPasswordSuccess<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure error)? error,
   }) {
     return success?.call(message);
   }
@@ -425,7 +425,7 @@ class _$ResetPasswordSuccessImpl<T> implements ResetPasswordSuccess<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -491,7 +491,7 @@ abstract class _$$ResetPasswordErrorImplCopyWith<T, $Res> {
           $Res Function(_$ResetPasswordErrorImpl<T>) then) =
       __$$ResetPasswordErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({String error});
+  $Res call({ServerFailure error});
 }
 
 /// @nodoc
@@ -514,7 +514,7 @@ class __$$ResetPasswordErrorImplCopyWithImpl<T, $Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ServerFailure,
     ));
   }
 }
@@ -525,7 +525,7 @@ class _$ResetPasswordErrorImpl<T> implements ResetPasswordError<T> {
   const _$ResetPasswordErrorImpl({required this.error});
 
   @override
-  final String error;
+  final ServerFailure error;
 
   @override
   String toString() {
@@ -558,7 +558,7 @@ class _$ResetPasswordErrorImpl<T> implements ResetPasswordError<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure error) error,
   }) {
     return error(this.error);
   }
@@ -569,7 +569,7 @@ class _$ResetPasswordErrorImpl<T> implements ResetPasswordError<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -580,7 +580,7 @@ class _$ResetPasswordErrorImpl<T> implements ResetPasswordError<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -628,10 +628,10 @@ class _$ResetPasswordErrorImpl<T> implements ResetPasswordError<T> {
 }
 
 abstract class ResetPasswordError<T> implements ResetPasswordState<T> {
-  const factory ResetPasswordError({required final String error}) =
+  const factory ResetPasswordError({required final ServerFailure error}) =
       _$ResetPasswordErrorImpl<T>;
 
-  String get error;
+  ServerFailure get error;
 
   /// Create a copy of ResetPasswordState
   /// with the given fields replaced by the non-null parameter values.

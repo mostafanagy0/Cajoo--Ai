@@ -11,6 +11,7 @@ import 'package:cajoo/feature/home/presentation/views/main_view.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/login/presentation/views/login_view.dart';
 import 'package:cajoo/feature/onbording/presentation/views/onbording_view.dart';
+import 'package:cajoo/feature/profile/presentation/views/edite_profile_view.dart';
 import 'package:cajoo/feature/profile/presentation/views/help_and_support_view.dart';
 import 'package:cajoo/feature/profile/presentation/views/profile_view.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
@@ -45,6 +46,8 @@ class AppRouter {
                 ));
       case Routes.profileview:
         return MaterialPageRoute(builder: (_) => const ProfileView());
+      case Routes.editeprofile:
+        return MaterialPageRoute(builder: (_) => const EditeProfileView());
       case Routes.helpandsupport:
         return MaterialPageRoute(builder: (_) => const HelpAndSupportView());
       case Routes.resetpassword:

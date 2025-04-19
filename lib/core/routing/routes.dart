@@ -9,4 +9,5 @@ class Routes {
   static const String enterOtp = '/enterotp';
   static const String resetpassword = '/resetpassword';
   static const String helpandsupport = '/helpandsupport';
+  static const String editeprofile = '/editeprofile';
 }

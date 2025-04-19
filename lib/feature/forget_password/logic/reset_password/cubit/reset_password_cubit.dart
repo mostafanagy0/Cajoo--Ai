@@ -22,8 +22,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
             passwordConfirm: confermPasswordController.text));
     result.fold(
       (failure) {
-        emit(ResetPasswordState.error(
-            error: failure.message ?? "Unknown Error"));
+        emit(ResetPasswordState.error(error: failure));
       },
       (success) {
         emit(const ResetPasswordState.success('Succsee Reset Password'));

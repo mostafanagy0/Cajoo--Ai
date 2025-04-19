@@ -1,5 +1,5 @@
+import 'package:cajoo/core/errors/server_failure.dart';
 import 'package:cajoo/core/helpers/extention.dart';
-import 'package:cajoo/core/networking/api_error_model.dart';
 import 'package:cajoo/core/theming/colors.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_state.dart';
@@ -33,8 +33,8 @@ class LoginBlocListener extends StatelessWidget {
             context.pop();
             context.pushReplacementNamed(Routes.mainView);
           },
-          error: (apiError) {
-            setupErrorState(context, apiError);
+          error: (serverFailure) {
+            setupErrorState(context, serverFailure);
           },
         );
       },
@@ -42,8 +42,8 @@ class LoginBlocListener extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, ApiErrorModel apiError) {
-    context.pop();
+  void setupErrorState(BuildContext context, ServerFailure serverFailure) {
+    context.pop(); // لإغلاق أي حوار مفتوح حاليًا
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -52,19 +52,37 @@ class LoginBlocListener extends StatelessWidget {
           color: Colors.red,
           size: 32,
         ),
-        content: Text(
-          apiError.message ?? "Unexpected error",
-          style: TextStyles.font16Weight400,
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // عرض رسالة الخطأ العامة
+            Text(
+              serverFailure.message,
+              style: TextStyles.font16Weight400,
+            ),
+            const SizedBox(height: 16),
+
+            // إذا كان هناك أخطاء إضافية (مثل الأخطاء الخاصة بكل حقل)
+            if (serverFailure.errors != null &&
+                serverFailure.errors!.isNotEmpty)
+              ...serverFailure.errors!.map((error) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    "${error.path}: ${error.msg}",
+                    style:
+                        TextStyles.font14Weight400.copyWith(color: Colors.red),
+                  ),
+                );
+              }),
+          ],
         ),
         actions: [
           TextButton(
             onPressed: () {
-              context.pop();
+              context.pop(); // إغلاق الحوار عند الضغط على "Got it"
             },
-            child: const Text(
-              'Got it',
-              // style: TextStyles.font14BlueSemiBold,
-            ),
+            child: const Text('Got it'),
           ),
         ],
       ),

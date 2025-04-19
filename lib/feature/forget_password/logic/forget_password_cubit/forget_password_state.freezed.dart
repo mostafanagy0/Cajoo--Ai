@@ -21,7 +21,7 @@ mixin _$ForgetPasswordState<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ForgetPasswordState<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$ForgetPasswordState<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,7 +134,7 @@ class _$ForgetInitialImpl<T> implements _ForgetInitial<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure failure) error,
   }) {
     return initial();
   }
@@ -145,7 +145,7 @@ class _$ForgetInitialImpl<T> implements _ForgetInitial<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure failure)? error,
   }) {
     return initial?.call();
   }
@@ -156,7 +156,7 @@ class _$ForgetInitialImpl<T> implements _ForgetInitial<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,7 +251,7 @@ class _$ForgetLoadingImpl<T> implements ForgetLoading<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure failure) error,
   }) {
     return loading();
   }
@@ -262,7 +262,7 @@ class _$ForgetLoadingImpl<T> implements ForgetLoading<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure failure)? error,
   }) {
     return loading?.call();
   }
@@ -273,7 +273,7 @@ class _$ForgetLoadingImpl<T> implements ForgetLoading<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -396,7 +396,7 @@ class _$ForgetSuccessImpl<T> implements ForgetSuccess<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure failure) error,
   }) {
     return success(message);
   }
@@ -407,7 +407,7 @@ class _$ForgetSuccessImpl<T> implements ForgetSuccess<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure failure)? error,
   }) {
     return success?.call(message);
   }
@@ -418,7 +418,7 @@ class _$ForgetSuccessImpl<T> implements ForgetSuccess<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure failure)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -483,7 +483,7 @@ abstract class _$$ForgetErrorImplCopyWith<T, $Res> {
           $Res Function(_$ForgetErrorImpl<T>) then) =
       __$$ForgetErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({String error});
+  $Res call({ServerFailure failure});
 }
 
 /// @nodoc
@@ -499,13 +499,13 @@ class __$$ForgetErrorImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? failure = null,
   }) {
     return _then(_$ForgetErrorImpl<T>(
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as ServerFailure,
     ));
   }
 }
@@ -513,14 +513,14 @@ class __$$ForgetErrorImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$ForgetErrorImpl<T> implements ForgetError<T> {
-  const _$ForgetErrorImpl({required this.error});
+  const _$ForgetErrorImpl({required this.failure});
 
   @override
-  final String error;
+  final ServerFailure failure;
 
   @override
   String toString() {
-    return 'ForgetPasswordState<$T>.error(error: $error)';
+    return 'ForgetPasswordState<$T>.error(failure: $failure)';
   }
 
   @override
@@ -528,11 +528,11 @@ class _$ForgetErrorImpl<T> implements ForgetError<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ForgetErrorImpl<T> &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(runtimeType, failure);
 
   /// Create a copy of ForgetPasswordState
   /// with the given fields replaced by the non-null parameter values.
@@ -549,9 +549,9 @@ class _$ForgetErrorImpl<T> implements ForgetError<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) success,
-    required TResult Function(String error) error,
+    required TResult Function(ServerFailure failure) error,
   }) {
-    return error(this.error);
+    return error(failure);
   }
 
   @override
@@ -560,9 +560,9 @@ class _$ForgetErrorImpl<T> implements ForgetError<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? success,
-    TResult? Function(String error)? error,
+    TResult? Function(ServerFailure failure)? error,
   }) {
-    return error?.call(this.error);
+    return error?.call(failure);
   }
 
   @override
@@ -571,11 +571,11 @@ class _$ForgetErrorImpl<T> implements ForgetError<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? success,
-    TResult Function(String error)? error,
+    TResult Function(ServerFailure failure)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(failure);
     }
     return orElse();
   }
@@ -619,10 +619,10 @@ class _$ForgetErrorImpl<T> implements ForgetError<T> {
 }
 
 abstract class ForgetError<T> implements ForgetPasswordState<T> {
-  const factory ForgetError({required final String error}) =
+  const factory ForgetError({required final ServerFailure failure}) =
       _$ForgetErrorImpl<T>;
 
-  String get error;
+  ServerFailure get failure;
 
   /// Create a copy of ForgetPasswordState
   /// with the given fields replaced by the non-null parameter values.

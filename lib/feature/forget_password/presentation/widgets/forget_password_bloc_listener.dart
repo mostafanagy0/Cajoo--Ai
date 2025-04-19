@@ -1,5 +1,5 @@
+import 'package:cajoo/core/errors/server_failure.dart';
 import 'package:cajoo/core/helpers/extention.dart';
-import 'package:cajoo/core/networking/api_error_model.dart';
 import 'package:cajoo/core/theming/colors.dart';
 import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forget_password_state.dart';
 import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forgetpassword_cubit.dart';
@@ -32,20 +32,15 @@ class ForgetPasswordBlocListener extends StatelessWidget {
         }, success: (sendpassword) {
           context.pop();
           showSuccessDialog(context);
-        }, error: (apiError) {
-          setupErrorState(
-              context,
-              ApiErrorModel(
-                message: apiError,
-                errorsType: [],
-              ));
+        }, error: (serverFailure) {
+          setupErrorState(context, serverFailure);
         });
       },
       child: const SizedBox.shrink(),
     );
   }
 
-  void setupErrorState(BuildContext context, ApiErrorModel apiError) {
+  void setupErrorState(BuildContext context, ServerFailure serverFailure) {
     context.pop();
     showDialog(
       context: context,
@@ -56,7 +51,7 @@ class ForgetPasswordBlocListener extends StatelessWidget {
           size: 32,
         ),
         content: Text(
-          apiError.message ?? "Unexpected error",
+          serverFailure.message,
           style: TextStyles.font16Weight400,
         ),
         actions: [

@@ -14,7 +14,9 @@ class ProfileOptions extends StatelessWidget {
         CustomProfileOption(
           icon: Assets.imagesEditeoutline,
           title: 'Edit Profile',
-          onTap: () {},
+          onTap: () {
+            context.pushNamed(Routes.editeprofile);
+          },
         ),
         const SizedBox(
           height: 12,

@@ -17,8 +17,7 @@ class ForgetpasswordCubit extends Cubit<ForgetPasswordState> {
         ForgetPassworsRequestModel(email: emailController.text));
     result.fold(
       (failure) {
-        emit(ForgetPasswordState.error(
-            error: failure.message ?? "Unknown Error"));
+        emit(ForgetPasswordState.error(failure: failure));
       },
       (success) {
         emit(ForgetPasswordState.success(success.message));
