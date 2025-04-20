@@ -17,14 +17,26 @@ class ResetPasswordResponse {
 
 @JsonSerializable()
 class UserData {
+  @JsonKey(name: '_id')
   final String id;
   final String username;
   final String email;
+  final String? password;
+  final String? profileImage;
+  final String? createdAt;
+  final String? updatedAt;
+  @JsonKey(name: '__v')
+  final int? v;
 
   UserData({
     required this.id,
     required this.username,
     required this.email,
+    this.password,
+    this.profileImage,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

@@ -21,13 +21,23 @@ Map<String, dynamic> _$ResetPasswordResponseToJson(
     };
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
-      id: json['id'] as String,
+      id: json['_id'] as String,
       username: json['username'] as String,
       email: json['email'] as String,
+      password: json['password'] as String?,
+      profileImage: json['profileImage'] as String?,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      v: (json['__v'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'username': instance.username,
       'email': instance.email,
+      'password': instance.password,
+      'profileImage': instance.profileImage,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      '__v': instance.v,
     };

@@ -7,8 +7,6 @@ import 'package:cajoo/feature/forget_password/logic/reset_password/cubit/reset_p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/theming/styles.dart';
-
 class ResetPasswordBlocListener extends StatelessWidget {
   const ResetPasswordBlocListener({super.key});
 
@@ -20,22 +18,26 @@ class ResetPasswordBlocListener extends StatelessWidget {
           current is ResetPasswordSuccess ||
           current is ResetPasswordError,
       listener: (context, state) {
-        state.whenOrNull(loading: () {
-          showDialog(
-            context: context,
-            builder: (context) => const Center(
-              child: CircularProgressIndicator(
-                color: AppColor.primaryColor,
+        state.whenOrNull(
+          loading: () {
+            showDialog(
+              context: context,
+              builder: (context) => const Center(
+                child: CircularProgressIndicator(
+                  color: AppColor.primaryColor,
+                ),
               ),
-            ),
-          );
-        }, success: (resetpassword) {
-          context.pop();
-          showSuccessMessage(context, resetpassword);
-          context.pushReplacementNamed(Routes.loginView);
-        }, error: (serverFailure) {
-          setupErrorState(context, serverFailure);
-        });
+            );
+          },
+          success: (resetPasswordMessage) {
+            context.pop();
+            showSuccessMessage(context, resetPasswordMessage);
+            context.pushReplacementNamed(Routes.loginView);
+          },
+          error: (serverFailure) {
+            setupErrorState(context, serverFailure);
+          },
+        );
       },
       child: const SizedBox.shrink(),
     );
@@ -43,36 +45,14 @@ class ResetPasswordBlocListener extends StatelessWidget {
 
   void setupErrorState(BuildContext context, ServerFailure serverFailure) {
     context.pop();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
-        content: Text(
-          serverFailure.message,
-          style: TextStyles.font16Weight400,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.pop();
-            },
-            child: const Text(
-              'Got it',
-              // style: TextStyles.font14BlueSemiBold,
-            ),
-          ),
-        ],
-      ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(serverFailure.message)),
     );
   }
 
   void showSuccessMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Succes Reset Password')),
+      SnackBar(content: Text(message)),
     );
   }
 }

@@ -68,14 +68,11 @@ class ForgetPasswordRepoImp extends ForgetPasswordRepo {
       return right(response);
     } catch (e) {
       if (e is ServerFailure) {
-        // إذا كان الخطأ هو ServerFailure
-        return Left(e); // إعادة الخطأ كما هو
+        return Left(e);
       } else if (e is DioException) {
-        // إذا كان الخطأ من Dio
         return Left(
-            ServerFailure.fromDioError(e)); // تحويل الخطأ إلى ServerFailure
+            ServerFailure.fromDioError(e)); 
       } else {
-        // في حالة حدوث أخطاء غير متوقعة
         return Left(ServerFailure.fromMessage("Unexpected error occurred"));
       }
     }
