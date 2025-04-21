@@ -1,5 +1,8 @@
+import 'package:cajoo/core/constants/shered_pref_keys.dart';
 import 'package:cajoo/core/errors/server_failure.dart';
+import 'package:cajoo/core/helpers/shered_pref_helper_.dart';
 import 'package:cajoo/core/networking/api_service.dart';
+import 'package:cajoo/core/networking/dio_factory.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/models/login_response.dart';
 import 'package:cajoo/feature/login/data/repos/login_repo.dart';
@@ -16,17 +19,19 @@ class LoginRepoImp extends LoginRepo {
       LoginRequistBody loginRequistBody) async {
     try {
       final response = await apiService.login(loginRequistBody);
+
+      if (response.userToken.isNotEmpty) {
+        await SharedPrefHelper.setSecuredString(
+            SharedPrefKeys.authToken, response.userToken);
+        DioFactory.setTokenIntoHeaderAfterLogin(response.userToken);
+      }
       return Right(response);
     } catch (e) {
       if (e is ServerFailure) {
-        // إذا كان الخطأ هو ServerFailure
-        return Left(e); // إعادة الخطأ كما هو
+        return Left(e);
       } else if (e is DioException) {
-        // إذا كان الخطأ من Dio
-        return Left(
-            ServerFailure.fromDioError(e)); // تحويل الخطأ إلى ServerFailure
+        return Left(ServerFailure.fromDioError(e));
       } else {
-        // في حالة حدوث أخطاء غير متوقعة
         return Left(ServerFailure.fromMessage("Unexpected error occurred"));
       }
     }
