@@ -1,11 +1,29 @@
+import 'package:cajoo/core/helpers/shered_pref_helper_.dart';
 import 'package:cajoo/core/theming/colors.dart';
-import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/utils/assets.dart';
+import 'package:cajoo/feature/home/presentation/widgets/hello_widget.dart';
+import 'package:cajoo/feature/home/presentation/widgets/uplode_photo_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  String userName = '';
+  @override
+  void initState() {
+    getUserName();
+    super.initState();
+  }
+
+  Future<void> getUserName() async {
+    userName = await SharedPrefHelper.getString('username');
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,62 +39,8 @@ class HomeView extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 100,
-                  ),
-                  Text(
-                    'Hello,',
-                    style: TextStyles.font20Weight400
-                        .copyWith(color: const Color(0xFFD0D6E2)),
-                  ),
-                  Text(
-                    'Ahmed Mohamed',
-                    style: TextStyles.font20Weight400
-                        .copyWith(color: const Color(0xFFD0D6E2)),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 230,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Container(
-                  width: 330,
-                  height: 270,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF4F2F7),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        // color: Colors.grey.shade300,
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      )
-                    ],
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text("Upload Photo",
-                            style: TextStyles.font24Weight700Bold),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        SvgPicture.asset(Assets.imagesCloud),
-                        const SizedBox(height: 8),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            HelloWidget(userName: userName),
+            const UpLodePhotoWidget(),
           ],
         ));
   }

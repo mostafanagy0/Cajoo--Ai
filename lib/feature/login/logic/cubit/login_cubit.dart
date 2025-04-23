@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cajoo/core/helpers/shered_pref_helper_.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/repos/login_repo_imp.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_state.dart';
@@ -22,7 +23,8 @@ class LoginCubit extends Cubit<LoginState> {
       (apiError) {
         emit(LoginState.error(error: apiError));
       },
-      (success) {
+      (success) async {
+        await SharedPrefHelper.setData('username', success.userData.username);
         emit(LoginState.success(success));
         emailController.clear();
         passwordController.clear();
