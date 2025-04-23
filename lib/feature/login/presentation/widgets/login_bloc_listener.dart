@@ -43,48 +43,32 @@ class LoginBlocListener extends StatelessWidget {
   }
 
   void setupErrorState(BuildContext context, ServerFailure serverFailure) {
-    context.pop(); // لإغلاق أي حوار مفتوح حاليًا
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
+    context.pop();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
         content: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // عرض رسالة الخطأ العامة
             Text(
               serverFailure.message,
-              style: TextStyles.font16Weight400,
+              style: TextStyles.font16Weight400.copyWith(color: Colors.white),
             ),
-            const SizedBox(height: 16),
-
-            // إذا كان هناك أخطاء إضافية (مثل الأخطاء الخاصة بكل حقل)
+            const SizedBox(height: 8),
             if (serverFailure.errors != null &&
                 serverFailure.errors!.isNotEmpty)
               ...serverFailure.errors!.map((error) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 4.0),
                   child: Text(
                     "${error.path}: ${error.msg}",
-                    style:
-                        TextStyles.font14Weight400.copyWith(color: Colors.red),
+                    style: TextStyles.font14Weight400
+                        .copyWith(color: Colors.white),
                   ),
                 );
               }),
           ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.pop(); // إغلاق الحوار عند الضغط على "Got it"
-            },
-            child: const Text('Got it'),
-          ),
-        ],
       ),
     );
   }

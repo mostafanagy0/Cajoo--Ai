@@ -42,40 +42,36 @@ class EditeProfileView extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      Stack(children: [
-                        Container(
-                          width: 96,
-                          height: 96,
-                          decoration: const ShapeDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(Assets.imagesOnbording1)),
-                            shape: OvalBorder(
-                              side: BorderSide(width: 2, color: Colors.white),
-                            ),
-                            shadows: [
-                              BoxShadow(
-                                color: Color(0xFFD4E0EB),
-                                blurRadius: 8,
-                                offset: Offset(0, 2),
-                                spreadRadius: 0,
-                              )
-                            ],
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 50,
+                            backgroundImage:
+                                const AssetImage(Assets.imagesOnbording1),
+                            backgroundColor: Colors.grey[200],
                           ),
-                        ),
-                        Positioned(
-                          top: 50,
-                          left: 60,
-                          child: FloatingActionButton(
-                            backgroundColor: Colors.transparent,
-                            onPressed: () {},
-                            child: const Icon(
-                              Icons.add,
-                              color: AppColor.primaryColor,
-                              size: 30,
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColor.primaryColor,
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                              ),
+                              child: const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 20,
+                              ),
                             ),
                           ),
-                        ),
-                      ]),
+                        ],
+                      ),
                       const SizedBox(
                         height: 20,
                       ),

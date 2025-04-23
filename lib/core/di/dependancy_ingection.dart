@@ -6,6 +6,9 @@ import 'package:cajoo/feature/forget_password/logic/reset_password/cubit/reset_p
 import 'package:cajoo/feature/forget_password/logic/verify_reset_code/cubit/verify_reset_code_cubit.dart';
 import 'package:cajoo/feature/login/data/repos/login_repo_imp.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
+import 'package:cajoo/feature/profile/data/repos/profile_repo_impl.dart';
+import 'package:cajoo/feature/profile/logic/cubit/delet_account_cubit.dart';
+import 'package:cajoo/feature/profile/logic/get%20Profile/get_profile_cubit.dart';
 import 'package:cajoo/feature/signup/data/repos/signup_repo_imp.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:dio/dio.dart';
@@ -41,5 +44,14 @@ Future<void> setupGetIt() async {
 
   // reset password
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
+
+  //get profile
+  getIt.registerLazySingleton<ProfileRepoImpl>(
+    () => ProfileRepoImpl(apiService: getIt()),
+  );
+  getIt.registerFactory<GetProfileCubit>(
+    () => GetProfileCubit(getIt()),
+  );
+  // delete account
+  getIt.registerFactory<DeleteAccountCubit>(() => DeleteAccountCubit(getIt()));
 }
-   

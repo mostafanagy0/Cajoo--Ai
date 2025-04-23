@@ -4,9 +4,14 @@ import 'package:cajoo/feature/profile/presentation/widgets/language_option_widge
 import 'package:cajoo/feature/profile/presentation/widgets/profile_options.dart';
 import 'package:flutter/material.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,15 +28,17 @@ class ProfileView extends StatelessWidget {
             )),
         body: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              ImageAndNameProfile(),
-              SizedBox(
-                height: 8,
-              ),
-              ProfileOptions(),
-              LanguageOptionWidget()
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ImageAndNameProfile(),
+                SizedBox(
+                  height: 8,
+                ),
+                ProfileOptions(),
+                LanguageOptionWidget()
+              ],
+            ),
           ),
         ));
   }

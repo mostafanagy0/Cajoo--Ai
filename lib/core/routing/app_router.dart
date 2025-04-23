@@ -30,20 +30,24 @@ class AppRouter {
                   create: (context) => getIt<LoginCubit>(),
                   child: const LoginView(),
                 ));
+      // SignUpView
       case Routes.signUpView:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => getIt<SignupCubit>(),
                   child: const SignUpView(),
                 ));
+      // HomeView
       case Routes.homeview:
         return MaterialPageRoute(builder: (_) => const HomeView());
+      // ForgetPasswordView
       case Routes.forgetPassword:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => getIt<ForgetpasswordCubit>(),
                   child: const ForgetPasswordView(),
                 ));
+      // ProfileView
       case Routes.profileview:
         return MaterialPageRoute(builder: (_) => const ProfileView());
       case Routes.editeprofile:

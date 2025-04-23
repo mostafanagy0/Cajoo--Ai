@@ -28,7 +28,7 @@ class ImageAndNameProfile extends StatelessWidget {
           height: 6,
         ),
         Text(
-          'Ahmed Mohamed',
+          'Mostafa',
           style: TextStyles.font32Weight600.copyWith(fontSize: 18),
         )
       ],

@@ -7,6 +7,7 @@ import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_requ
 import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_response.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/models/login_response.dart';
+import 'package:cajoo/feature/profile/data/models/get_profile_model.dart';
 import 'package:cajoo/feature/signup/data/models/signup_request_body.dart';
 import 'package:cajoo/feature/signup/data/models/signup_response.dart';
 import 'package:dio/dio.dart';
@@ -41,4 +42,10 @@ abstract class ApiService {
   Future<ResetPasswordResponse> resetPassword(
     @Body() ResetPasswordRequestModel resetPasswordRequestModel,
   );
+
+  @GET('https://cashwe-aged-firefly-6248.fly.dev/api/vi/user/getData/getMe')
+  Future<GetProfileModel> getProfile();
+  @DELETE(
+      'https://cashwe-aged-firefly-6248.fly.dev/api/vi/user/deleteMyAccount')
+  Future<void> deleteMyAccount();
 }
