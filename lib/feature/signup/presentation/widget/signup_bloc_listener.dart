@@ -1,5 +1,6 @@
 import 'package:cajoo/core/errors/server_failure.dart';
 import 'package:cajoo/core/helpers/extention.dart';
+import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_state.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class SignupBlocListener extends StatelessWidget {
           success: (signupResponse) {
             context.pop();
             showSuccessDialog(context);
+            context.pushNamed(Routes.loginView);
           },
           error: (error) {
             setupErrorState(context, error);

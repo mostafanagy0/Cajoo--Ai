@@ -93,7 +93,7 @@ class EditeProfileView extends StatelessWidget {
                         onTap: () {
                           // validateThenDoLogin(context);
                         },
-                        text: 'Login',
+                        text: 'Update',
                       ),
                       const SizedBox(height: 12),
                     ],
