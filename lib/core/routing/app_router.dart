@@ -6,6 +6,7 @@ import 'package:cajoo/feature/forget_password/logic/verify_reset_code/cubit/veri
 import 'package:cajoo/feature/forget_password/presentation/views/enter_otp_view.dart';
 import 'package:cajoo/feature/forget_password/presentation/views/forget_password_view.dart';
 import 'package:cajoo/feature/forget_password/presentation/views/reset_password_view.dart';
+import 'package:cajoo/feature/history/presentation/views/history_view.dart';
 import 'package:cajoo/feature/home/presentation/views/home_view.dart';
 import 'package:cajoo/feature/home/presentation/views/main_view.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
@@ -22,8 +23,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AppRouter {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      //OnbordingView
+
       case Routes.onboarding:
         return MaterialPageRoute(builder: (_) => const OnbordingView());
+      //loginView
       case Routes.loginView:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
@@ -31,6 +35,7 @@ class AppRouter {
                   child: const LoginView(),
                 ));
       // SignUpView
+
       case Routes.signUpView:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
@@ -38,9 +43,11 @@ class AppRouter {
                   child: const SignUpView(),
                 ));
       // HomeView
+
       case Routes.homeview:
         return MaterialPageRoute(builder: (_) => const HomeView());
       // ForgetPasswordView
+
       case Routes.forgetPassword:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
@@ -48,24 +55,38 @@ class AppRouter {
                   child: const ForgetPasswordView(),
                 ));
       // ProfileView
+
       case Routes.profileview:
         return MaterialPageRoute(builder: (_) => const ProfileView());
+      // editeprofile
+
       case Routes.editeprofile:
         return MaterialPageRoute(builder: (_) => const EditeProfileView());
+      //History View
+
+      case Routes.history:
+        return MaterialPageRoute(builder: (_) => const HistoryView());
+      //HelpAndSupportView
+
       case Routes.helpandsupport:
         return MaterialPageRoute(builder: (_) => const HelpAndSupportView());
+      //resetpassword
+
       case Routes.resetpassword:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => getIt<ResetPasswordCubit>(),
                   child: const ResetPasswordView(),
                 ));
+      //enterOtp
+
       case Routes.enterOtp:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => getIt<VerifyResetCodeCubit>(),
                   child: EnterOtpview(),
                 ));
+      //mainView
       case Routes.mainView:
         return MaterialPageRoute(builder: (_) => const MainView());
 

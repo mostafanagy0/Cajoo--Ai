@@ -1,6 +1,7 @@
 import 'package:cajoo/feature/home/presentation/widgets/custom_bottom_navigation_bar.dart';
 import 'package:cajoo/feature/home/presentation/widgets/main_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -11,6 +12,9 @@ class MainView extends StatefulWidget {
 
 class _HomeViewState extends State<MainView> {
   int currentViewIndex = 0;
+
+  String? image_path;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,17 +23,32 @@ class _HomeViewState extends State<MainView> {
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         onItemTapped: (index) {
-          currentViewIndex = index;
-          setState(() {});
+          setState(() {
+            currentViewIndex = index;
+          });
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          await getImagefromGallery();
+        },
         backgroundColor: const Color(0xFF9882B9),
         shape: const CircleBorder(),
         child: const Icon(Icons.add, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+
+  getImagefromGallery() async {
+    final pickedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      // AppLocal.cacheData(AppLocal.ImageKey, pickedImage.path);
+
+      setState(() {
+        image_path = pickedImage.path;
+      });
+    }
   }
 }

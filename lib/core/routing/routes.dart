@@ -10,4 +10,5 @@ class Routes {
   static const String resetpassword = '/resetpassword';
   static const String helpandsupport = '/helpandsupport';
   static const String editeprofile = '/editeprofile';
+  static const String history = '/history';
 }

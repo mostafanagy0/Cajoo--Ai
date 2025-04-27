@@ -1,4 +1,5 @@
 import 'package:cajoo/core/theming/styles.dart';
+import 'package:cajoo/core/widgets/build_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HelpAndSupportView extends StatelessWidget {
@@ -7,13 +8,14 @@ class HelpAndSupportView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 60,
+              height: 40,
             ),
             Text(
               'Help&Support',
@@ -30,7 +32,7 @@ class HelpAndSupportView extends StatelessWidget {
               height: 16,
             ),
             const Text(
-              'mostafanagy855@gmail.com',
+              'cagosupport@gmail.com',
               style: TextStyle(
                 decoration: TextDecoration.underline,
               ),

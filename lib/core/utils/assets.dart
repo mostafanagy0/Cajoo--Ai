@@ -10,6 +10,10 @@ class Assets {
   /// assets/images/activeprofile.svg
   static const String imagesActiveprofile = "assets/images/activeprofile.svg";
 
+  /// Assets for imagesCAJO
+  /// assets/images/CAJO.png
+  static const String imagesCAJO = "assets/images/CAJO.png";
+
   /// Assets for imagesCheck
   /// assets/images/Check.svg
   static const String imagesCheck = "assets/images/Check.svg";
@@ -50,6 +54,10 @@ class Assets {
   /// assets/images/ic_baseline-history.png
   static const String imagesIcBaselineHistory = "assets/images/ic_baseline-history.png";
 
+  /// Assets for imagesImagetest
+  /// assets/images/imagetest.png
+  static const String imagesImagetest = "assets/images/imagetest.png";
+
   /// Assets for imagesInactivehome
   /// assets/images/inactivehome.svg
   static const String imagesInactivehome = "assets/images/inactivehome.svg";
@@ -57,6 +65,10 @@ class Assets {
   /// Assets for imagesInactiveprofile
   /// assets/images/inactiveprofile.svg
   static const String imagesInactiveprofile = "assets/images/inactiveprofile.svg";
+
+  /// Assets for imagesLogoo
+  /// assets/images/logoo.png
+  static const String imagesLogoo = "assets/images/logoo.png";
 
   /// Assets for imagesLogoutOutline
   /// assets/images/logoutOutline.png
