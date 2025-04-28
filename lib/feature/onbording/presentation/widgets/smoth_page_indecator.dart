@@ -1,5 +1,4 @@
 import 'package:cajoo/core/theming/colors.dart';
-import 'package:cajoo/feature/onbording/data/onbording_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -23,6 +22,6 @@ class SmothPageIndicator extends StatelessWidget {
             strokeWidth: 1.5,
             activeDotColor: AppColor.primaryColor),
         controller: controller,
-        count: onbordingData.length);
+        count: 3);
   }
 }

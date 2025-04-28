@@ -1,5 +1,6 @@
 import 'package:cajoo/core/utils/assets.dart';
 import 'package:cajoo/feature/home/presentation/widgets/navigation_bar_item.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -36,11 +37,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               });
             },
             child: NavigationBarItem(
-              image: currentIndex == 0
-                  ? Assets.imagesActivehome
-                  : Assets.imagesInactivehome,
-              title: 'Home',
-            ),
+                image: currentIndex == 0
+                    ? Assets.imagesActivehome
+                    : Assets.imagesInactivehome,
+                title: S.of(context).Home),
           ),
           GestureDetector(
             onTap: () {
@@ -53,7 +53,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               image: currentIndex == 1
                   ? Assets.imagesActiveprofile
                   : Assets.imagesInactiveprofile,
-              title: 'Profile',
+              title: S.of(context).Profile,
             ),
           ),
         ],

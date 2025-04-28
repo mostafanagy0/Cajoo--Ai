@@ -3,6 +3,7 @@ import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/core/utils/assets.dart';
 import 'package:cajoo/feature/profile/presentation/widgets/custom_profile_option.dart';
 import 'package:cajoo/feature/profile/presentation/widgets/logout_bloc_provider.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ProfileOptions extends StatelessWidget {
@@ -14,7 +15,7 @@ class ProfileOptions extends StatelessWidget {
       children: [
         CustomProfileOption(
           icon: Assets.imagesEditeoutline,
-          title: 'Edit Profile',
+          title: S.of(context).EditProfile,
           onTap: () {
             context.pushNamed(Routes.editeprofile);
           },
@@ -24,7 +25,7 @@ class ProfileOptions extends StatelessWidget {
         ),
         CustomProfileOption(
           icon: Assets.imagesIcBaselineHistory,
-          title: 'History',
+          title: S.of(context).History,
           onTap: () {
             context.pushNamed(Routes.history);
           },
@@ -34,7 +35,7 @@ class ProfileOptions extends StatelessWidget {
         ),
         CustomProfileOption(
           icon: Assets.imagesHelpOutline,
-          title: 'Help & support',
+          title: S.of(context).Helpsupport,
           onTap: () {
             context.pushNamed(Routes.helpandsupport);
           },

@@ -6,18 +6,18 @@ import 'package:cajoo/feature/onbording/presentation/widgets/custom_nav_bar.dart
 import 'package:cajoo/feature/onbording/presentation/widgets/smoth_page_indecator.dart';
 import 'package:flutter/material.dart';
 
-class OnbordingViewBody extends StatefulWidget {
-  const OnbordingViewBody({
-    super.key,
-  });
+class OnboardingViewBody extends StatefulWidget {
+  const OnboardingViewBody({super.key});
 
   @override
-  State<OnbordingViewBody> createState() => _OnbordingViewBodyState();
+  State<OnboardingViewBody> createState() => _OnboardingViewBodyState();
 }
 
-class _OnbordingViewBodyState extends State<OnbordingViewBody> {
-  var currntentPage = 0;
+class _OnboardingViewBodyState extends State<OnboardingViewBody> {
+  var currentPage = 0;
   late PageController controller;
+  late List<OnbordingEntity> onboardingItems;
+
   @override
   void initState() {
     super.initState();
@@ -25,6 +25,13 @@ class _OnbordingViewBodyState extends State<OnbordingViewBody> {
     controller.addListener(() {
       setState(() {});
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    onboardingItems = getOnbordingData(context);
   }
 
   @override
@@ -37,57 +44,51 @@ class _OnbordingViewBodyState extends State<OnbordingViewBody> {
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: controller,
-      itemCount: onbordingData.length,
+      itemCount: onboardingItems.length,
       itemBuilder: (context, index) {
+        final item = onboardingItems[index];
+
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(
-                height: 7.5,
-              ),
+              const SizedBox(height: 7.5),
 
-              //Navigation bar
+              // Navigation bar
               CustomNavBar(
                 onTap: () {
                   context.pushReplacementNamed(Routes.loginView);
                 },
               ),
-              const SizedBox(
-                height: 75,
-              ),
+              const SizedBox(height: 75),
+
               Container(
                 height: 334,
                 width: 338,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                          onbordingData[index].image,
-                        ),
-                        fit: BoxFit.fill)),
+                  image: DecorationImage(
+                    image: AssetImage(item.image),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
-              const SizedBox(
-                height: 68,
-              ),
-              Text(onbordingData[index].title,
-                  style: TextStyles.font24Weight700Bold),
-              const SizedBox(
-                height: 19,
-              ),
+              const SizedBox(height: 68),
+
               Text(
-                onbordingData[index].description,
+                item.title,
+                style: TextStyles.font24Weight700Bold,
+              ),
+              const SizedBox(height: 19),
+
+              Text(
+                item.description,
                 style: TextStyles.font20Weight400,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: 100,
-              ),
-              SmothPageIndicator(
-                controller: controller,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
+              const SizedBox(height: 100),
+
+              SmothPageIndicator(controller: controller),
+              const SizedBox(height: 16),
             ],
           ),
         );

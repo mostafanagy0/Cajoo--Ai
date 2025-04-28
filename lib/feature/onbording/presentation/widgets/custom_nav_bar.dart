@@ -1,4 +1,5 @@
 import 'package:cajoo/core/theming/styles.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -15,7 +16,7 @@ class CustomNavBar extends StatelessWidget {
       child: Align(
           alignment: AlignmentDirectional.centerEnd,
           child: Text(
-            'Skip',
+            S.of(context).Skip,
             style: TextStyles.font14Weight400,
           )),
     );

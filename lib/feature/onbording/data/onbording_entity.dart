@@ -1,4 +1,6 @@
 import 'package:cajoo/core/utils/assets.dart';
+import 'package:cajoo/generated/l10n.dart';
+import 'package:flutter/material.dart';
 
 class OnbordingEntity {
   final String title;
@@ -12,23 +14,20 @@ class OnbordingEntity {
   });
 }
 
-List<OnbordingEntity> onbordingData = [
-  OnbordingEntity(
-    title: 'Fast & Smart Diagnosis',
-    description:
-        'Snap a photo of your cashew plant, and let AI instantly detect the problem.',
-    image: Assets.imagesOnbording1,
-  ),
-  OnbordingEntity(
-    title: 'KNOW THE DISEASE & Fix It',
-    description:
-        'Get the disease name, causes, and the best solution—all in one tap.',
-    image: Assets.imagesOnbording2,
-  ),
-  OnbordingEntity(
-    title: 'Protect Your Farm with Ease',
-    description:
-        'Receive expert tips to keep your plants healthy and boost productivity.',
-    image: Assets.imagesOnbording3,
-  ),
-];
+List<OnbordingEntity> getOnbordingData(BuildContext context) => [
+      OnbordingEntity(
+        title: S.of(context).onbordingtitel1,
+        description: S.of(context).onbordingdescription1,
+        image: Assets.imagesOnbording1,
+      ),
+      OnbordingEntity(
+        title: S.of(context).onbordingtitel2,
+        description: S.of(context).onbordingdescription2,
+        image: Assets.imagesOnbording2,
+      ),
+      OnbordingEntity(
+        title: S.of(context).onbordingtitel3,
+        description: S.of(context).onbordingdescription3,
+        image: Assets.imagesOnbording3,
+      ),
+    ];

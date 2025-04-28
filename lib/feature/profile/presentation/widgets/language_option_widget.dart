@@ -1,5 +1,7 @@
+import 'package:cajoo/core/state%20management/cubit/app_lanuage_cubit.dart';
 import 'package:cajoo/core/theming/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LanguageOptionWidget extends StatefulWidget {
   const LanguageOptionWidget({
@@ -26,6 +28,9 @@ class _LanguageOptionWidgetState extends State<LanguageOptionWidget> {
                 setState(() {
                   selectedLanguage = 'en';
                 });
+                context
+                    .read<AppLanuageCubit>()
+                    .changeLanguage(const Locale('en'));
               },
               child: Container(
                 height: 56,
@@ -46,6 +51,9 @@ class _LanguageOptionWidgetState extends State<LanguageOptionWidget> {
                 setState(() {
                   selectedLanguage = 'ar';
                 });
+                context
+                    .read<AppLanuageCubit>()
+                    .changeLanguage(const Locale('ar'));
               },
               child: Container(
                 height: 56,
@@ -56,7 +64,7 @@ class _LanguageOptionWidgetState extends State<LanguageOptionWidget> {
                     color: selectedLanguage == 'ar'
                         ? AppColor.primaryColor
                         : Colors.white),
-                child: const Center(child: Text('Arabic')),
+                child: const Center(child: Text('عربي')),
               ),
             ),
           ),
