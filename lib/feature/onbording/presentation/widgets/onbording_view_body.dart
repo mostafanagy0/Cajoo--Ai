@@ -52,7 +52,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(height: 7.5),
+              const SizedBox(height: 10),
 
               // Navigation bar
               CustomNavBar(
@@ -60,7 +60,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                   context.pushReplacementNamed(Routes.loginView);
                 },
               ),
-              const SizedBox(height: 75),
+              const SizedBox(height: 60),
 
               Container(
                 height: 334,

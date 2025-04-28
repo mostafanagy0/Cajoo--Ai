@@ -1,5 +1,6 @@
 import 'package:cajoo/core/state%20management/cubit/app_lanuage_cubit.dart';
 import 'package:cajoo/core/theming/colors.dart';
+import 'package:cajoo/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,9 +36,16 @@ class _LanguageOptionWidgetState extends State<LanguageOptionWidget> {
               child: Container(
                 height: 56,
                 decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(6),
-                        bottomLeft: Radius.circular(6)),
+                    borderRadius: BorderRadius.only(
+                      topLeft:
+                          isArabic() ? Radius.zero : const Radius.circular(6),
+                      bottomLeft:
+                          isArabic() ? Radius.zero : const Radius.circular(6),
+                      topRight:
+                          isArabic() ? const Radius.circular(6) : Radius.zero,
+                      bottomRight:
+                          isArabic() ? const Radius.circular(6) : Radius.zero,
+                    ),
                     color: selectedLanguage == 'en'
                         ? AppColor.primaryColor
                         : Colors.white),
@@ -58,9 +66,16 @@ class _LanguageOptionWidgetState extends State<LanguageOptionWidget> {
               child: Container(
                 height: 56,
                 decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(6),
-                        topRight: Radius.circular(6)),
+                    borderRadius: BorderRadius.only(
+                      topLeft:
+                          isArabic() ? const Radius.circular(6) : Radius.zero,
+                      bottomLeft:
+                          isArabic() ? const Radius.circular(6) : Radius.zero,
+                      topRight:
+                          isArabic() ? Radius.zero : const Radius.circular(6),
+                      bottomRight:
+                          isArabic() ? Radius.zero : const Radius.circular(6),
+                    ),
                     color: selectedLanguage == 'ar'
                         ? AppColor.primaryColor
                         : Colors.white),

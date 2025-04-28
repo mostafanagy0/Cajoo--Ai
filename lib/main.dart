@@ -5,6 +5,7 @@ import 'package:cajoo/core/helpers/shered_pref_helper_.dart';
 import 'package:cajoo/core/state%20management/cubit/app_lanuage_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import 'core/constants/shered_pref_keys.dart';
 
@@ -21,9 +22,9 @@ void main() async {
 checkIfLoggedInUser() async {
   String? userToken =
       await SharedPrefHelper.getSecuredString(SharedPrefKeys.authToken);
-  if (userToken.isNullOrEmpty()) {
-    isLoggedInUser = true;
-  } else {
-    isLoggedInUser = false;
-  }
+  isLoggedInUser = !userToken.isNullOrEmpty();
+}
+
+bool isArabic() {
+  return Intl.getCurrentLocale() == 'ar';
 }
