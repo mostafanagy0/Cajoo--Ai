@@ -3,6 +3,7 @@ import 'package:cajoo/core/helpers/extention.dart';
 import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_state.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,8 +47,9 @@ class SignupBlocListener extends StatelessWidget {
 
   void showSuccessDialog(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('you have signed up successfully!'),
+      SnackBar(
+        content: Text(S.of(context).youhavesignedupsuccessfully),
+        duration: const Duration(seconds: 2),
         backgroundColor: AppColor.primaryColor,
       ),
     );
@@ -72,8 +74,8 @@ class SignupBlocListener extends StatelessWidget {
             onPressed: () {
               context.pop();
             },
-            child: const Text(
-              'Got it',
+            child: Text(
+              S.of(context).Gotit,
               //style: TextStyles.font14BlueSemiBold,
             ),
           ),

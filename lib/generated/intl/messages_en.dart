@@ -22,16 +22,45 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "AIAccuracy": MessageLookupByLibrary.simpleMessage("AI Accuracy"),
+        "ConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "CreatAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
         "DeletingAccount": MessageLookupByLibrary.simpleMessage(
             "Deleting Your Account Is Done Successfully.."),
+        "Diagnosis": MessageLookupByLibrary.simpleMessage("Diagnosis"),
+        "Donothaveaccount": MessageLookupByLibrary.simpleMessage(
+            "Don’t have account? Sign Up "),
+        "Doyouhaveaccount":
+            MessageLookupByLibrary.simpleMessage("Do you have account? "),
         "EditProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "Email": MessageLookupByLibrary.simpleMessage("Email"),
+        "ForgetPassword":
+            MessageLookupByLibrary.simpleMessage("Forget Password?"),
+        "Gotit": MessageLookupByLibrary.simpleMessage("Got it"),
+        "Hello": MessageLookupByLibrary.simpleMessage("Hello,"),
         "Helpsupport": MessageLookupByLibrary.simpleMessage("Help & support"),
         "History": MessageLookupByLibrary.simpleMessage("History"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "ImagreetoTheTarms": MessageLookupByLibrary.simpleMessage(
+            "I’m agree to The Tarms of Service and Privasy Policy"),
+        "Login": MessageLookupByLibrary.simpleMessage("Login"),
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "MyProfile": MessageLookupByLibrary.simpleMessage("My Profile"),
+        "Name": MessageLookupByLibrary.simpleMessage("Name"),
+        "Password": MessageLookupByLibrary.simpleMessage("Password"),
+        "Pleaseenteravalidemail":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "Pleaseenteravalidpassword": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid password"),
+        "Pleaseenteravalidusername": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid username"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "Recent": MessageLookupByLibrary.simpleMessage("Recent"),
+        "SignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "Treatment": MessageLookupByLibrary.simpleMessage("Treatment"),
+        "UploadPhoto": MessageLookupByLibrary.simpleMessage("Upload Photo"),
         "onbordingdescription1": MessageLookupByLibrary.simpleMessage(
             "Snap a photo of your cashew plant, and let AI instantly detect the problem."),
         "onbordingdescription2": MessageLookupByLibrary.simpleMessage(
@@ -45,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "onbordingtitel3":
             MessageLookupByLibrary.simpleMessage("Protect Your Farm with Ease"),
         "supportDescription": MessageLookupByLibrary.simpleMessage(
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.")
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."),
+        "youhavesignedupsuccessfully": MessageLookupByLibrary.simpleMessage(
+            "You have signed up successfully !")
       };
 }

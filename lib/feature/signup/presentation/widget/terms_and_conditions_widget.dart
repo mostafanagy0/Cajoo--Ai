@@ -1,5 +1,6 @@
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/widgets/custom_check_box.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class TermsAndConditionsWidget extends StatefulWidget {
@@ -29,7 +30,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
         ),
         Expanded(
           child: Text(
-            'I’m agree to The Tarms of Service and Privasy Policy',
+            S.of(context).ImagreetoTheTarms,
             style: TextStyles.font14Weight400.copyWith(fontSize: 14),
           ),
         )

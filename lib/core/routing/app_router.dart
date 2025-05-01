@@ -17,6 +17,7 @@ import 'package:cajoo/feature/profile/presentation/views/help_and_support_view.d
 import 'package:cajoo/feature/profile/presentation/views/profile_view.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:cajoo/feature/signup/presentation/views/signup_view.dart';
+import 'package:cajoo/feature/uplode_photo/presentation/views/uplode_photo_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,6 +47,9 @@ class AppRouter {
 
       case Routes.homeview:
         return MaterialPageRoute(builder: (_) => const HomeView());
+      // UplodePhotoView
+      case Routes.upLodePhoto:
+        return MaterialPageRoute(builder: (_) => const UplodePhotoView());
       // ForgetPasswordView
 
       case Routes.forgetPassword:

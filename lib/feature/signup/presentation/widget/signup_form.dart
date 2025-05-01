@@ -1,6 +1,7 @@
 import 'package:cajoo/core/helpers/app_regex.dart';
 import 'package:cajoo/core/widgets/custom_text_form_field.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,11 +26,11 @@ class _SignupFormState extends State<SignupForm> {
             controller: signupCubit.usernameController,
             validator: (valu) {
               if (valu == null || valu.isEmpty) {
-                return 'Please enter a valid username';
+                return S.of(context).Pleaseenteravalidusername;
               }
               return null;
             },
-            hintText: 'Name',
+            hintText: S.of(context).Name,
           ),
           const SizedBox(height: 16),
           CustomTextFormFeild(
@@ -37,23 +38,23 @@ class _SignupFormState extends State<SignupForm> {
               if (value == null ||
                   value.isEmpty ||
                   !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
+                return S.of(context).Pleaseenteravalidemail;
               }
               return null;
             },
             controller: signupCubit.emailController,
-            hintText: 'Email',
+            hintText: S.of(context).Email,
           ),
           const SizedBox(height: 16),
           CustomTextFormFeild(
             controller: signupCubit.passwordController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return S.of(context).Pleaseenteravalidpassword;
               }
               return null;
             },
-            hintText: 'Password',
+            hintText: S.of(context).Password,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
@@ -71,11 +72,11 @@ class _SignupFormState extends State<SignupForm> {
             controller: signupCubit.confirmPasswordController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return S.of(context).Pleaseenteravalidpassword;
               }
               return null;
             },
-            hintText: 'Confirm Password',
+            hintText: S.of(context).ConfirmPassword,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {

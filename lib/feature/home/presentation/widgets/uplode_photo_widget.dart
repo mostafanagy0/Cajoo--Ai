@@ -1,5 +1,6 @@
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/utils/assets.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -22,7 +23,7 @@ class UpLodePhotoWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             boxShadow: const [
               BoxShadow(
-                // color: Colors.grey.shade300,
+             
                 blurRadius: 10,
                 offset: Offset(0, 2),
               )
@@ -32,7 +33,8 @@ class UpLodePhotoWidget extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Upload Photo", style: TextStyles.font24Weight700Bold),
+                Text(S.of(context).UploadPhoto,
+                    style: TextStyles.font24Weight700Bold),
                 const SizedBox(
                   width: 20,
                 ),

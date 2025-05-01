@@ -1,13 +1,10 @@
 {
-
     "onbordingtitel1": "Fast & Smart Diagnosis",
     "onbordingdescription1": "Snap a photo of your cashew plant, and let AI instantly detect the problem.",
-    "onbordingtitel2": "Know the Disease & Fix It",
-    
+    "onbordingtitel2": "Know the Disease & Fix It",   
 "onbordingdescription2":"Get the disease name, causes, and the best solution—all in one tap.",
 "onbordingtitel3": "Protect Your Farm with Ease",
     "onbordingdescription3": "Receive timely alerts and personalized recommendations to safeguard your farm.",
-
   "Skip": "Skip",
   "MyProfile": "My Profile",
   "EditProfile":"Edit Profile",
@@ -17,10 +14,27 @@
   "Home":"Home",
   "Profile":"Profile",
   "DeletingAccount":"Deleting Your Account Is Done Successfully..",
- "supportDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-
-  
-  
-
-
+ "supportDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+ "Treatment":"Treatment",
+ "Diagnosis":"Diagnosis",
+ "AIAccuracy":"AI Accuracy",
+ "UploadPhoto":"Upload Photo",
+ "Hello":"Hello,",
+ "Login":"Login",
+ "SignUp":"Sign Up",
+    "Email":"Email",
+    "Password":"Password",
+    "ConfirmPassword":"Confirm Password",
+    "Name":"Name",
+     "Donothaveaccount":"Don’t have account? Sign Up ",
+    "Doyouhaveaccount":"Do you have account? ",
+    "ImagreetoTheTarms": "I’m agree to The Tarms of Service and Privasy Policy",
+    "CreatAccount":"Create Account",
+    "Pleaseenteravalidemail": "Please enter a valid email",
+    "Pleaseenteravalidpassword": "Please enter a valid password",
+    "ForgetPassword":"Forget Password?",
+    "youhavesignedupsuccessfully": "You have signed up successfully !"
+    ,"Gotit": "Got it",
+"Pleaseenteravalidusername": "Please enter a valid username",
+"Recent": "Recent"
 }

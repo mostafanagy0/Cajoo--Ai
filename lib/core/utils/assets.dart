@@ -10,6 +10,10 @@ class Assets {
   /// assets/images/activeprofile.svg
   static const String imagesActiveprofile = "assets/images/activeprofile.svg";
 
+  /// Assets for imagesArow
+  /// assets/images/arow.svg
+  static const String imagesArow = "assets/images/arow.svg";
+
   /// Assets for imagesCAJO
   /// assets/images/CAJO.png
   static const String imagesCAJO = "assets/images/CAJO.png";
@@ -21,6 +25,14 @@ class Assets {
   /// Assets for imagesCloud
   /// assets/images/cloud.svg
   static const String imagesCloud = "assets/images/cloud.svg";
+
+  /// Assets for imagesDoctor
+  /// assets/images/doctor.jpg
+  static const String imagesDoctor = "assets/images/doctor.jpg";
+
+  /// Assets for imagesDoctor2
+  /// assets/images/doctor2.jpg
+  static const String imagesDoctor2 = "assets/images/doctor2.jpg";
 
   /// Assets for imagesEditeoutline
   /// assets/images/editeoutline.png

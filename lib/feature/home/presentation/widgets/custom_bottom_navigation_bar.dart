@@ -29,6 +29,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          // Home
           GestureDetector(
             onTap: () {
               setState(() {
@@ -37,11 +38,17 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               });
             },
             child: NavigationBarItem(
-                image: currentIndex == 0
-                    ? Assets.imagesActivehome
-                    : Assets.imagesInactivehome,
-                title: S.of(context).Home),
+              image: currentIndex == 0
+                  ? Assets.imagesActivehome
+                  : Assets.imagesInactivehome,
+              title: S.of(context).Home,
+            ),
           ),
+
+          // مساحة فاضية للزر الأوسط
+          const SizedBox(width: 60), // دا بيخلي في فراغ للـ FAB
+
+          // Profile
           GestureDetector(
             onTap: () {
               setState(() {

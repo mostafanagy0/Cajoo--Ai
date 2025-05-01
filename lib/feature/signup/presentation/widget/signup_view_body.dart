@@ -7,6 +7,7 @@ import 'package:cajoo/feature/signup/presentation/widget/have_account_widget.dar
 import 'package:cajoo/feature/signup/presentation/widget/signup_bloc_listener.dart';
 import 'package:cajoo/feature/signup/presentation/widget/signup_form.dart';
 import 'package:cajoo/feature/signup/presentation/widget/terms_and_conditions_widget.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class SignupViewBody extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'Sign up',
+              S.of(context).SignUp,
               style: TextStyles.font34Weight500Semibold,
             ),
           ),
@@ -50,15 +51,15 @@ class SignupViewBody extends StatelessWidget {
                   const SizedBox(height: 8),
                   const SizedBox(height: 100),
                   CustomButtom(
-                    text: 'Creat Account',
+                    text: S.of(context).CreatAccount,
                     onTap: () {
                       validateThenDoSignup(context);
                     },
                   ),
                   const SizedBox(height: 12),
                   HaveAccountWidget(
-                    textOne: 'Do you have account?  ',
-                    textTwo: 'Login',
+                    textOne: S.of(context).Doyouhaveaccount,
+                    textTwo: S.of(context).Login,
                     onTap: () {
                       context.pushNamed(Routes.loginView);
                     },

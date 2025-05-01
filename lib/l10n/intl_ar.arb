@@ -1,5 +1,4 @@
 {
-
 "onbordingtitel1": "حماية مزرعتك بسهولة",
 "onbordingdescription1": "احصل على نصائح الخبراء للحفاظ على صحة نباتاتك وتعزيز الإنتاجية.",
 "onbordingtitel2": "اعرف المرض وعالجه",
@@ -16,5 +15,26 @@
 "Profile":"الملف الشخصي",
 "DeletingAccount":"تم حذف حسابك بنجاح..",
 "supportDescription": "نص وهمي ببساطة هو نص وهمي في صناعة الطباعة والتنضيد. نص وهمي هو النص القياسي في صناعة الطباعة منذ القرن الخامس عشر، عندما أخذ طابع غير معروف مجموعة من النوع وخلطها لصنع كتاب نموذج. لقد نجت ليس فقط خمسة قرون، ولكن أيضا القفزة إلى التنضيد الإلكتروني، مما يجعلها غير متغيرة أساسا."
-  
+ , "Treatment":"العلاج",
+ "Diagnosis":"التشخيص",
+"AIAccuracy":"دقة الذكاء الاصطناعي",
+"UploadPhoto":"تحميل الصورة",
+"Hello":"مرحبا,",
+"Login":"Login",
+ "SignUp":"تسجيل",
+    "Email":"البريد الإلكتروني",
+    "Password":"كلمة المرور",
+    "ConfirmPassword":"تأكيد كلمة المرور",
+    "Name":"الاسم",
+    "Donothaveaccount":"ليس لديك حساب؟",
+    "Do you have account?":"هل لديك حساب؟",
+    "Im agree to The Tarms of Service and Privasy Policy": "أنا موافق على شروط الخدمة وسياسة الخصوصية",
+"Creat Account":"إنشاء حساب"
+,"Recent": "الأخيرة",
+"Pleaseenteravalidemail": "يرجى إدخال بريد إلكتروني صالح",
+    "Pleaseenteravalidpassword": "يرجى إدخال كلمة مرور صالحة",
+    "ForgetPassword":"نسيت كلمة المرور؟",
+    "youhavesignedupsuccessfully": "لقد قمت بالتسجيل بنجاح!"
+,"Gotit": "حصلت عليه",
+"Pleaseenteravalidusername": "يرجى إدخال اسم مستخدم صالح"
 }

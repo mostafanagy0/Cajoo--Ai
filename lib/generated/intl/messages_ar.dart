@@ -22,17 +22,42 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "AIAccuracy":
+            MessageLookupByLibrary.simpleMessage("دقة الذكاء الاصطناعي"),
+        "ConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "DeletingAccount":
             MessageLookupByLibrary.simpleMessage("تم حذف حسابك بنجاح.."),
+        "Diagnosis": MessageLookupByLibrary.simpleMessage("التشخيص"),
+        "Donothaveaccount":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "EditProfile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصى"),
+        "Email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "ForgetPassword":
+            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "Gotit": MessageLookupByLibrary.simpleMessage("حصلت عليه"),
+        "Hello": MessageLookupByLibrary.simpleMessage("مرحبا,"),
         "Helpsupport": MessageLookupByLibrary.simpleMessage("المساعده&الدعم"),
         "History": MessageLookupByLibrary.simpleMessage("تاريخ"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "Login": MessageLookupByLibrary.simpleMessage("Login"),
         "Logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
         "MyProfile": MessageLookupByLibrary.simpleMessage("حسابي"),
+        "Name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "Pleaseenteravalidemail": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال بريد إلكتروني صالح"),
+        "Pleaseenteravalidpassword":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال كلمة مرور صالحة"),
+        "Pleaseenteravalidusername":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم مستخدم صالح"),
         "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "Recent": MessageLookupByLibrary.simpleMessage("الأخيرة"),
+        "SignUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "Skip": MessageLookupByLibrary.simpleMessage("تخطى"),
+        "Treatment": MessageLookupByLibrary.simpleMessage("العلاج"),
+        "UploadPhoto": MessageLookupByLibrary.simpleMessage("تحميل الصورة"),
         "onbordingdescription1": MessageLookupByLibrary.simpleMessage(
             "احصل على نصائح الخبراء للحفاظ على صحة نباتاتك وتعزيز الإنتاجية."),
         "onbordingdescription2": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "onbordingtitel3":
             MessageLookupByLibrary.simpleMessage("تشخيص سريع وذكي"),
         "supportDescription": MessageLookupByLibrary.simpleMessage(
-            "نص وهمي ببساطة هو نص وهمي في صناعة الطباعة والتنضيد. نص وهمي هو النص القياسي في صناعة الطباعة منذ القرن الخامس عشر، عندما أخذ طابع غير معروف مجموعة من النوع وخلطها لصنع كتاب نموذج. لقد نجت ليس فقط خمسة قرون، ولكن أيضا القفزة إلى التنضيد الإلكتروني، مما يجعلها غير متغيرة أساسا.")
+            "نص وهمي ببساطة هو نص وهمي في صناعة الطباعة والتنضيد. نص وهمي هو النص القياسي في صناعة الطباعة منذ القرن الخامس عشر، عندما أخذ طابع غير معروف مجموعة من النوع وخلطها لصنع كتاب نموذج. لقد نجت ليس فقط خمسة قرون، ولكن أيضا القفزة إلى التنضيد الإلكتروني، مما يجعلها غير متغيرة أساسا."),
+        "youhavesignedupsuccessfully":
+            MessageLookupByLibrary.simpleMessage("لقد قمت بالتسجيل بنجاح!")
       };
 }

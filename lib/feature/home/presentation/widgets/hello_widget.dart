@@ -1,4 +1,6 @@
 import 'package:cajoo/core/theming/styles.dart';
+import 'package:cajoo/generated/l10n.dart';
+import 'package:cajoo/main.dart';
 import 'package:flutter/material.dart';
 
 class HelloWidget extends StatelessWidget {
@@ -12,7 +14,10 @@ class HelloWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30),
+      padding: EdgeInsets.only(
+        right: isArabic() ? 32 : 0,
+        left: isArabic() ? 0 : 32,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,7 +25,7 @@ class HelloWidget extends StatelessWidget {
             height: 100,
           ),
           Text(
-            'Hello,',
+            S.of(context).Hello,
             style: TextStyles.font20Weight400
                 .copyWith(color: const Color(0xFFD0D6E2)),
           ),

@@ -7,6 +7,7 @@ import 'package:cajoo/feature/login/presentation/widgets/forget_password_widget.
 import 'package:cajoo/feature/login/presentation/widgets/login_bloc_listener.dart';
 import 'package:cajoo/feature/login/presentation/widgets/login_form.dart.dart';
 import 'package:cajoo/feature/signup/presentation/widget/have_account_widget.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +26,7 @@ class LoginViewBody extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'Login',
+              S.of(context).Login,
               style: TextStyles.font34Weight500Semibold,
             ),
           ),
@@ -52,12 +53,12 @@ class LoginViewBody extends StatelessWidget {
                     onTap: () {
                       validateThenDoLogin(context);
                     },
-                    text: 'Login',
+                    text: S.of(context).Login,
                   ),
                   const SizedBox(height: 12),
                   HaveAccountWidget(
-                    textOne: 'Don’t have account? ',
-                    textTwo: 'Sign Up',
+                    textOne: S.of(context).Donothaveaccount,
+                    textTwo: S.of(context).SignUp,
                     onTap: () {
                       context.pushNamed(Routes.signUpView);
                     },

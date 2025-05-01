@@ -1,6 +1,7 @@
 import 'package:cajoo/core/helpers/app_regex.dart';
 import 'package:cajoo/core/widgets/custom_text_form_field.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
+import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,23 +30,23 @@ class _LoginFormState extends State<LoginForm> {
               if (value == null ||
                   value.isEmpty ||
                   !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
+                return S.of(context).Pleaseenteravalidemail;
               }
               return null;
             },
-            hintText: 'Email',
+            hintText: S.of(context).Email,
           ),
           const SizedBox(height: 16),
           CustomTextFormFeild(
             controller: loginCubit.passwordController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return S.of(context).Pleaseenteravalidpassword; 
               }
               return null;
             },
             isObscureText: isObscureText,
-            hintText: 'Password',
+            hintText: S.of(context).Password,
             suffixIcon: GestureDetector(
                 onTap: () {
                   setState(() {
