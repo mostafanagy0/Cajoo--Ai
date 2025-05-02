@@ -18,6 +18,7 @@ import 'package:cajoo/feature/profile/presentation/views/profile_view.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:cajoo/feature/signup/presentation/views/signup_view.dart';
 import 'package:cajoo/feature/uplode_photo/presentation/views/uplode_photo_view.dart';
+import 'package:cajoo/start_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -70,6 +71,9 @@ class AppRouter {
 
       case Routes.history:
         return MaterialPageRoute(builder: (_) => const HistoryView());
+      //StartUpView
+      case Routes.strtup:
+        return MaterialPageRoute(builder: (_) => const StartUpView());
       //HelpAndSupportView
 
       case Routes.helpandsupport:

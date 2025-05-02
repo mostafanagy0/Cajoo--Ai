@@ -19,33 +19,32 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  @POST('https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/login')
+  @POST('https://cashwa-nodejs-server.fly.dev/api/vi/auth/login')
   Future<LoginResponse> login(
     @Body() LoginRequistBody loginRequistBody,
   );
 
-  @POST('https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/register')
+  @POST(ApiConstants.signup)
   Future<SignupResponse> signup(
     @Body() SignupRequestBody signupRequestBody,
   );
 
-  @POST('https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/forgetPassword')
+  @POST(ApiConstants.forgetPassword)
   Future<ForgetPasswordResponse> forgetPassword(
     @Body() ForgetPassworsRequestModel forgetPassworsRequestModel,
   );
 
-  @POST('https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/verifyResetCode')
+  @POST(ApiConstants.verifyResetCode)
   Future<VerifyResetCodeResponse> verifyResetCode(
     @Body() VerifyResetCodeRequestModel verifyResetCodeRequestModel,
   );
-  @POST('https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/resetPassword')
+  @POST(ApiConstants.resetPassword)
   Future<ResetPasswordResponse> resetPassword(
     @Body() ResetPasswordRequestModel resetPasswordRequestModel,
   );
 
-  @GET('https://cashwe-aged-firefly-6248.fly.dev/api/vi/user/getData/getMe')
+  @GET(ApiConstants.getProfile)
   Future<GetProfileModel> getProfile();
-  @DELETE(
-      'https://cashwe-aged-firefly-6248.fly.dev/api/vi/user/deleteMyAccount')
+  @DELETE(ApiConstants.logout)
   Future<void> deleteMyAccount();
 }

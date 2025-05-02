@@ -12,4 +12,5 @@ class Routes {
   static const String editeprofile = '/editeprofile';
   static const String history = '/history';
   static const String upLodePhoto = '/upLodePhoto';
+  static const String strtup = '/strtup';
 }

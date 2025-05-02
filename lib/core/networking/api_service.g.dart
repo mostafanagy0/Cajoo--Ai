@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://cashwe-aged-firefly-6248.fly.dev/api/v1/';
+    baseUrl ??= 'https://cashwa-nodejs-server.fly.dev/api/vi/';
   }
 
   final Dio _dio;
@@ -37,7 +37,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/login',
+          'https://cashwa-nodejs-server.fly.dev/api/vi/auth/login',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -71,7 +71,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/register',
+          'auth/register',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -106,7 +106,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/forgetPassword',
+          'auth/forgetPassword',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -141,7 +141,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/verifyResetCode',
+          'auth/verifyResetCode',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -176,7 +176,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/auth/resetPassword',
+          'auth/resetPassword',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -209,7 +209,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/user/getData/getMe',
+          'user/getData/getMe',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -242,7 +242,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'https://cashwe-aged-firefly-6248.fly.dev/api/vi/user/deleteMyAccount',
+          'user/deleteMyAccount',
           queryParameters: queryParameters,
           data: _data,
         )
