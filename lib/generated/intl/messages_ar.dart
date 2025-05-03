@@ -52,12 +52,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يرجى إدخال كلمة مرور صالحة"),
         "Pleaseenteravalidusername":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم مستخدم صالح"),
+        "Pleaseuploadanimage":
+            MessageLookupByLibrary.simpleMessage("يرجى تحميل صورة"),
         "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "Recent": MessageLookupByLibrary.simpleMessage("الأخيرة"),
         "SignUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "Skip": MessageLookupByLibrary.simpleMessage("تخطى"),
         "Treatment": MessageLookupByLibrary.simpleMessage("العلاج"),
         "UploadPhoto": MessageLookupByLibrary.simpleMessage("تحميل الصورة"),
+        "nodetection": MessageLookupByLibrary.simpleMessage("لا يوجد اكتشاف"),
         "onbordingdescription1": MessageLookupByLibrary.simpleMessage(
             "احصل على نصائح الخبراء للحفاظ على صحة نباتاتك وتعزيز الإنتاجية."),
         "onbordingdescription2": MessageLookupByLibrary.simpleMessage(

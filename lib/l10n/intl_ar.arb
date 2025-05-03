@@ -36,5 +36,7 @@
     "ForgetPassword":"نسيت كلمة المرور؟",
     "youhavesignedupsuccessfully": "لقد قمت بالتسجيل بنجاح!"
 ,"Gotit": "حصلت عليه",
-"Pleaseenteravalidusername": "يرجى إدخال اسم مستخدم صالح"
+"Pleaseenteravalidusername": "يرجى إدخال اسم مستخدم صالح",
+"nodetection": "لا يوجد اكتشاف",
+"Pleaseuploadanimage":"يرجى تحميل صورة"
 }

@@ -55,12 +55,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter a valid password"),
         "Pleaseenteravalidusername": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid username"),
+        "Pleaseuploadanimage":
+            MessageLookupByLibrary.simpleMessage("Please upload an image"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "Recent": MessageLookupByLibrary.simpleMessage("Recent"),
         "SignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "Treatment": MessageLookupByLibrary.simpleMessage("Treatment"),
         "UploadPhoto": MessageLookupByLibrary.simpleMessage("Upload Photo"),
+        "nodetection": MessageLookupByLibrary.simpleMessage("No detection"),
         "onbordingdescription1": MessageLookupByLibrary.simpleMessage(
             "Snap a photo of your cashew plant, and let AI instantly detect the problem."),
         "onbordingdescription2": MessageLookupByLibrary.simpleMessage(

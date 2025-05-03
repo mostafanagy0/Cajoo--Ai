@@ -429,6 +429,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No detection`
+  String get nodetection {
+    return Intl.message(
+      'No detection',
+      name: 'nodetection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please upload an image`
+  String get Pleaseuploadanimage {
+    return Intl.message(
+      'Please upload an image',
+      name: 'Pleaseuploadanimage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

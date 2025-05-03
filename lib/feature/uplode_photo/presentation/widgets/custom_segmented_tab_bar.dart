@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:cajoo/core/theming/colors.dart';
 import 'package:cajoo/core/theming/styles.dart';
+import 'package:cajoo/feature/uplode_photo/data/models/image_detection_response_model.dart';
 import 'package:cajoo/feature/uplode_photo/logic/cubit/image_detection_cubit.dart';
 import 'package:cajoo/feature/uplode_photo/logic/cubit/image_detection_state.dart';
 import 'package:cajoo/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomSegmentedTab extends StatefulWidget {
@@ -15,6 +19,67 @@ class CustomSegmentedTab extends StatefulWidget {
 
 class _CustomSegmentedTabState extends State<CustomSegmentedTab> {
   int selectedIndex = 0;
+  Map<String, dynamic>? treatmentsData;
+  bool _isLoading = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isLoading) {
+      _isLoading = true;
+      loadTreatmentsJson(context).then((data) {
+        setState(() {
+          treatmentsData = data;
+          _isLoading = false;
+        });
+      });
+    }
+  }
+
+  Future<Map<String, dynamic>> loadTreatmentsJson(BuildContext context) async {
+    try {
+      final locale = Localizations.localeOf(context);
+      final languageCode = locale.languageCode;
+      final jsonPath = languageCode.toLowerCase().startsWith('ar')
+          ? 'assets/jsons/treatments_ar.json'
+          : 'assets/jsons/treatments_en.json';
+
+      bool fileExists = await DefaultAssetBundle.of(context)
+          .loadString(jsonPath)
+          .then((_) => true)
+          .catchError((e) => false);
+
+      if (!fileExists) {
+        const String fallbackPath = 'assets/jsons/treatments_en.json';
+        bool fallbackExists = await DefaultAssetBundle.of(context)
+            .loadString(fallbackPath)
+            .then((_) => true)
+            .catchError((e) => false);
+        if (!fallbackExists) {
+          return {'error': 'Both JSON files do not exist'};
+        }
+        final String fallbackJsonString =
+            await rootBundle.loadString(fallbackPath);
+        if (fallbackJsonString.isEmpty) {
+          return {'error': 'Fallback JSON file is empty'};
+        }
+        return jsonDecode(fallbackJsonString) as Map<String, dynamic>;
+      }
+
+      final String jsonString = await rootBundle.loadString(jsonPath);
+      if (jsonString.isEmpty) {
+        return {'error': 'JSON file is empty at $jsonPath'};
+      }
+
+      final data = jsonDecode(jsonString) as Map<String, dynamic>;
+      if (data.isEmpty) {
+        return {'error': 'Parsed JSON is empty at $jsonPath'};
+      }
+      return data;
+    } catch (e) {
+      return {'error': 'Error loading JSON: $e'};
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,28 +140,12 @@ class _CustomSegmentedTabState extends State<CustomSegmentedTab> {
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                   child: state is ImageDetectionSuccess
                       ? selectedIndex == 0
-                          ? Text(
-                              'Treatment will be added later',
-                              style: TextStyles.font14Weight400.copyWith(
-                                fontSize: 14,
-                                color: AppColor.primaryColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
-                          : Text(
-                              state.response.data.detection.detections
-                                      .isNotEmpty
-                                  ? state.response.data.detection.detections
-                                      .map((d) =>
-                                          '${d.className} (${(d.confidence * 100).toStringAsFixed(2)}%)')
-                                      .join('\n')
-                                  : 'No diagnosis available',
-                              style: TextStyles.font14Weight400.copyWith(
-                                fontSize: 14,
-                                color: AppColor.primaryColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
+                          ? treatmentsData == null
+                              ? const Center(child: CircularProgressIndicator())
+                              : _buildTreatmentWidget(
+                                  state.response.data.detection.detections)
+                          : _buildDiagnosisWidget(
+                              state.response.data.detection.detections)
                       : Text(
                           'Please upload an image',
                           style: TextStyles.font14Weight400.copyWith(
@@ -104,6 +153,8 @@ class _CustomSegmentedTabState extends State<CustomSegmentedTab> {
                             color: AppColor.primaryColor,
                             fontWeight: FontWeight.w500,
                           ),
+                          textAlign: TextAlign.right,
+                          textDirection: TextDirection.rtl,
                         ),
                 ),
               ),
@@ -111,6 +162,399 @@ class _CustomSegmentedTabState extends State<CustomSegmentedTab> {
           ],
         );
       },
+    );
+  }
+
+  Widget _buildTreatmentWidget(List<Detection> detections) {
+    final locale = Localizations.localeOf(context).languageCode;
+
+    if (treatmentsData == null) {
+      return Text(
+        locale.contains('ar') ? 'جاري تحميل البيانات...' : 'Loading data...',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    if (treatmentsData!.containsKey('error')) {
+      return Text(
+        locale.contains('ar')
+            ? 'خطأ: ${treatmentsData!['error']}'
+            : 'Error: ${treatmentsData!['error']}',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: Colors.red,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    if (treatmentsData!.isEmpty || detections.isEmpty) {
+      return Text(
+        locale.contains('ar') ? 'لا يوجد علاج متاح' : 'No treatment available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    final primaryDetection =
+        detections.reduce((a, b) => a.confidence > b.confidence ? a : b);
+    final className = primaryDetection.className;
+
+    final categories = treatmentsData!['categories'] as List<dynamic>?;
+    if (categories == null || categories.isEmpty) {
+      return Text(
+        locale.contains('ar')
+            ? 'لا توجد فئات متاحة'
+            : 'No categories available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    Map<String, dynamic>? targetCategory;
+
+    if (locale.toLowerCase().startsWith('ar')) {
+      if (className.toLowerCase().trim() == 'insect') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim() == 'الآفات الحشرية',
+          orElse: () => categories.firstWhere(
+              (cat) => cat['name']?.toString().trim().toLowerCase() == 'insect',
+              orElse: () => null),
+        );
+      } else if (className.toLowerCase().trim() == 'disease') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim() == 'الأمراض',
+          orElse: () => categories.firstWhere(
+              (cat) =>
+                  cat['name']?.toString().trim().toLowerCase() == 'disease',
+              orElse: () => null),
+        );
+      } else if (className.toLowerCase().trim() == 'abiotic') {
+        targetCategory = categories.firstWhere(
+          (cat) =>
+              cat['name']?.toString().trim() == 'الاضطرابات البيئية والتغذوية',
+          orElse: () => categories.firstWhere(
+              (cat) =>
+                  cat['name']?.toString().trim().toLowerCase() ==
+                  'abiotic (environmental & nutritional disorders)',
+              orElse: () => null),
+        );
+      }
+    } else {
+      if (className.toLowerCase().trim() == 'insect') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim().toLowerCase() == 'insect',
+          orElse: () => null,
+        );
+      } else if (className.toLowerCase().trim() == 'disease') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim().toLowerCase() == 'disease',
+          orElse: () => null,
+        );
+      } else if (className.toLowerCase().trim() == 'abiotic') {
+        targetCategory = categories.firstWhere(
+          (cat) =>
+              cat['name']?.toString().trim().toLowerCase() ==
+              'abiotic (environmental & nutritional disorders)',
+          orElse: () => null,
+        );
+      }
+    }
+
+    if (targetCategory == null) {
+      return Text(
+        locale.contains('ar')
+            ? 'لا يوجد علاج متاح لـ $className'
+            : 'No treatment available for $className',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    final diseases = (targetCategory['items'] ?? targetCategory['diseases'])
+        as List<dynamic>?;
+    if (diseases == null || diseases.isEmpty) {
+      return Text(
+        locale.contains('ar') ? 'لا يوجد علاج متاح' : 'No treatment available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    final disease = diseases[0];
+    final treatments =
+        (disease['treatment'] as List<dynamic>?)?.join('\n') ?? '';
+    if (treatments.isEmpty) {
+      return Text(
+        locale.contains('ar') ? 'لا يوجد علاج متاح' : 'No treatment available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            disease['name'] ?? 'غير معروف',
+            style: TextStyles.font14Weight400.copyWith(
+              fontSize: 16,
+              color: AppColor.primaryColor,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.right,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            locale.contains('ar') ? 'العلاجات:' : 'Treatments:',
+            style: TextStyles.font14Weight400.copyWith(
+              fontSize: 14,
+              color: AppColor.primaryColor,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.right,
+          ),
+          Text(
+            treatments,
+            style: TextStyles.font14Weight400.copyWith(
+              fontSize: 14,
+              color: AppColor.primaryColor,
+            ),
+            textAlign: TextAlign.right,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDiagnosisWidget(List<Detection> detections) {
+    final locale = Localizations.localeOf(context).languageCode;
+
+    if (treatmentsData == null) {
+      return Text(
+        locale.contains('ar') ? 'جاري تحميل البيانات...' : 'Loading data...',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    if (treatmentsData!.containsKey('error')) {
+      return Text(
+        locale.contains('ar')
+            ? 'خطأ: ${treatmentsData!['error']}'
+            : 'Error: ${treatmentsData!['error']}',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: Colors.red,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    if (treatmentsData!.isEmpty || detections.isEmpty) {
+      return Text(
+        locale.contains('ar') ? 'لا يوجد تشخيص متاح' : 'No diagnosis available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    final primaryDetection =
+        detections.reduce((a, b) => a.confidence > b.confidence ? a : b);
+    final className = primaryDetection.className;
+
+    final categories = treatmentsData!['categories'] as List<dynamic>?;
+    if (categories == null || categories.isEmpty) {
+      return Text(
+        locale.contains('ar')
+            ? 'لا توجد فئات متاحة'
+            : 'No categories available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    Map<String, dynamic>? targetCategory;
+
+    if (locale.toLowerCase().startsWith('ar')) {
+      if (className.toLowerCase().trim() == 'insect') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim() == 'الآفات الحشرية',
+          orElse: () => categories.firstWhere(
+              (cat) => cat['name']?.toString().trim().toLowerCase() == 'insect',
+              orElse: () => null),
+        );
+      } else if (className.toLowerCase().trim() == 'disease') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim() == 'الأمراض',
+          orElse: () => categories.firstWhere(
+              (cat) =>
+                  cat['name']?.toString().trim().toLowerCase() == 'disease',
+              orElse: () => null),
+        );
+      } else if (className.toLowerCase().trim() == 'abiotic') {
+        targetCategory = categories.firstWhere(
+          (cat) =>
+              cat['name']?.toString().trim() == 'الاضطرابات البيئية والتغذوية',
+          orElse: () => categories.firstWhere(
+              (cat) =>
+                  cat['name']?.toString().trim().toLowerCase() ==
+                  'abiotic (environmental & nutritional disorders)',
+              orElse: () => null),
+        );
+      }
+    } else {
+      if (className.toLowerCase().trim() == 'insect') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim().toLowerCase() == 'insect',
+          orElse: () => null,
+        );
+      } else if (className.toLowerCase().trim() == 'disease') {
+        targetCategory = categories.firstWhere(
+          (cat) => cat['name']?.toString().trim().toLowerCase() == 'disease',
+          orElse: () => null,
+        );
+      } else if (className.toLowerCase().trim() == 'abiotic') {
+        targetCategory = categories.firstWhere(
+          (cat) =>
+              cat['name']?.toString().trim().toLowerCase() ==
+              'abiotic (environmental & nutritional disorders)',
+          orElse: () => null,
+        );
+      }
+    }
+
+    if (targetCategory == null) {
+      return Text(
+        locale.contains('ar')
+            ? 'لا يوجد تشخيص متاح لـ $className'
+            : 'No diagnosis available for $className',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    final diseases = (targetCategory['items'] ?? targetCategory['diseases'])
+        as List<dynamic>?;
+    if (diseases == null || diseases.isEmpty) {
+      return Text(
+        locale.contains('ar') ? 'لا يوجد تشخيص متاح' : 'No diagnosis available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    final disease = diseases[0];
+    final symptoms = (disease['symptoms'] as List<dynamic>?)?.join('\n') ?? '';
+    if (symptoms.isEmpty) {
+      return Text(
+        locale.contains('ar') ? 'لا توجد أعراض متاحة' : 'No symptoms available',
+        style: TextStyles.font14Weight400.copyWith(
+          fontSize: 14,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+      );
+    }
+
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            disease['name'] ?? 'غير معروف',
+            style: TextStyles.font14Weight400.copyWith(
+              fontSize: 16,
+              color: AppColor.primaryColor,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.right,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            locale.contains('ar') ? 'الأعراض:' : 'Symptoms:',
+            style: TextStyles.font14Weight400.copyWith(
+              fontSize: 14,
+              color: AppColor.primaryColor,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.right,
+          ),
+          Text(
+            symptoms,
+            style: TextStyles.font14Weight400.copyWith(
+              fontSize: 14,
+              color: AppColor.primaryColor,
+            ),
+            textAlign: TextAlign.right,
+          ),
+        ],
+      ),
     );
   }
 }
