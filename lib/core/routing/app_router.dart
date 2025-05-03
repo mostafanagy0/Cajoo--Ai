@@ -50,7 +50,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeView());
       // UplodePhotoView
       case Routes.upLodePhoto:
-        return MaterialPageRoute(builder: (_) => const UplodePhotoView());
+        return MaterialPageRoute(builder: (_) => const UploadPhotoView());
       // ForgetPasswordView
 
       case Routes.forgetPassword:

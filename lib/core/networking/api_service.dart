@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cajoo/core/networking/api_constants.dart';
 import 'package:cajoo/feature/forget_password/data/models/forget_password_response.dart';
 import 'package:cajoo/feature/forget_password/data/models/forget_passwors_request_model.dart';
@@ -10,7 +12,9 @@ import 'package:cajoo/feature/login/data/models/login_response.dart';
 import 'package:cajoo/feature/profile/data/models/get%20profile/get_profile_model.dart';
 import 'package:cajoo/feature/signup/data/models/signup_request_body.dart';
 import 'package:cajoo/feature/signup/data/models/signup_response.dart';
+import 'package:cajoo/feature/uplode_photo/data/models/image_detection_response_model.dart';
 import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
@@ -38,6 +42,7 @@ abstract class ApiService {
   Future<VerifyResetCodeResponse> verifyResetCode(
     @Body() VerifyResetCodeRequestModel verifyResetCodeRequestModel,
   );
+
   @POST(ApiConstants.resetPassword)
   Future<ResetPasswordResponse> resetPassword(
     @Body() ResetPasswordRequestModel resetPasswordRequestModel,
@@ -45,6 +50,13 @@ abstract class ApiService {
 
   @GET(ApiConstants.getProfile)
   Future<GetProfileModel> getProfile();
+
   @DELETE(ApiConstants.logout)
   Future<void> deleteMyAccount();
+
+  @POST(ApiConstants.imagedetection)
+  @MultiPart()
+  Future<ImageDetectionResponseModel> imageDetection(
+    @Part(name: 'image', contentType: 'image/jpeg') File image,
+  );
 }

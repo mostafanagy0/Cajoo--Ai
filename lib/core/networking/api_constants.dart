@@ -8,6 +8,5 @@ class ApiConstants {
   static const String resetPassword = 'auth/resetPassword';
   static const String getProfile = 'user/getData/getMe';
   static const String updateProfile = 'user/updateUserData';
-  
-
+  static const String imagedetection = '${baseUrl}process-image';
 }

@@ -8,9 +8,11 @@ import 'package:cajoo/feature/login/data/repos/login_repo_imp.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/profile/data/repos/profile_repo_impl.dart';
 import 'package:cajoo/feature/profile/logic/cubit/delet_account_cubit.dart';
-import 'package:cajoo/feature/profile/logic/get%20Profile/get_profile_cubit.dart';
+import 'package:cajoo/feature/profile/logic/get%20profile/get_profile_cubit.dart';
 import 'package:cajoo/feature/signup/data/repos/signup_repo_imp.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
+import 'package:cajoo/feature/uplode_photo/data/repos/uploade_image_repo_impl.dart';
+import 'package:cajoo/feature/uplode_photo/logic/cubit/image_detection_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -19,6 +21,7 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
+  getIt.registerLazySingleton<Dio>(() => dio);
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 
   // login
@@ -32,26 +35,27 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt()));
 
   // forget password
-
   getIt.registerLazySingleton<ForgetPasswordRepoImp>(
       () => ForgetPasswordRepoImp(apiService: getIt()));
-  getIt
-      .registerFactory<ForgetpasswordCubit>(() => ForgetpasswordCubit(getIt()));
-  // verify reset code
+  getIt.registerFactory<ForgetpasswordCubit>(() => ForgetpasswordCubit(getIt()));
 
+  // verify reset code
   getIt.registerFactory<VerifyResetCodeCubit>(
       () => VerifyResetCodeCubit(getIt()));
 
   // reset password
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
 
-  //get profile
+  // get profile
   getIt.registerLazySingleton<ProfileRepoImpl>(
-    () => ProfileRepoImpl(apiService: getIt()),
-  );
-  getIt.registerFactory<GetProfileCubit>(
-    () => GetProfileCubit(getIt()),
-  );
+      () => ProfileRepoImpl(apiService: getIt()));
+  getIt.registerFactory<GetProfileCubit>(() => GetProfileCubit(getIt()));
+
   // delete account
   getIt.registerFactory<DeleteAccountCubit>(() => DeleteAccountCubit(getIt()));
+
+  // upload image
+  getIt.registerLazySingleton<UploadImageRepoImpl>(
+      () => UploadImageRepoImpl(dio: getIt()));
+  getIt.registerFactory<ImageDetectionCubit>(() => ImageDetectionCubit(getIt()));
 }

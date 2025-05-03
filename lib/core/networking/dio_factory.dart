@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
-  /// private constructor as I don't want to allow creating an instance of this class
   DioFactory._();
 
   static Dio? dio;
@@ -13,28 +12,35 @@ class DioFactory {
     Duration timeOut = const Duration(seconds: 50);
 
     if (dio == null) {
-      dio = Dio();
-      dio!
-        ..options.connectTimeout = timeOut
-        ..options.receiveTimeout = timeOut;
-      addDioHeaders();
+      dio = Dio(
+        BaseOptions(
+          connectTimeout: timeOut,
+          receiveTimeout: timeOut,
+          headers: {
+            'Accept': 'application/json',
+          },
+        ),
+      );
       addDioInterceptor();
+      addDioHeaders();
       return dio!;
     } else {
       return dio!;
     }
   }
 
-  static void addDioHeaders() async {
+  static Future<void> addDioHeaders() async {
+    final token =
+        await SharedPrefHelper.getSecuredString(SharedPrefKeys.authToken);
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization':
-          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.authToken)}',
+      'Authorization': token.isNotEmpty ? 'Bearer $token' : null,
     };
   }
 
   static void setTokenIntoHeaderAfterLogin(String token) {
     dio?.options.headers = {
+      'Accept': 'application/json',
       'Authorization': 'Bearer $token',
     };
   }
@@ -45,6 +51,21 @@ class DioFactory {
         requestBody: true,
         requestHeader: true,
         responseHeader: true,
+        responseBody: true,
+      ),
+    );
+    dio?.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          if (options.method == 'POST' &&
+              options.path.contains('process-image')) {
+            options.contentType = Headers.multipartFormDataContentType;
+            options.headers['Content-Disposition'] =
+                'form-data; name="image"; filename="image.jpg"';
+          }
+          print("Request headers: ${options.headers}");
+          return handler.next(options);
+        },
       ),
     );
   }
