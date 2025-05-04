@@ -7,6 +7,7 @@ import 'package:cajoo/feature/forget_password/data/models/reset_password_request
 import 'package:cajoo/feature/forget_password/data/models/reset_password_response.dart';
 import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_request_model.dart';
 import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_response.dart';
+import 'package:cajoo/feature/history/data/models/history_model.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/models/login_response.dart';
 import 'package:cajoo/feature/profile/data/models/get%20profile/get_profile_model.dart';
@@ -59,4 +60,6 @@ abstract class ApiService {
   Future<ImageDetectionResponseModel> imageDetection(
     @Part(name: 'image', contentType: 'image/jpeg') File image,
   );
+  @GET(ApiConstants.getHistory)
+  Future<HistoryResponse> getHistory();
 }

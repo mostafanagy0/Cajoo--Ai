@@ -6,6 +6,8 @@ import 'package:cajoo/feature/forget_password/logic/verify_reset_code/cubit/veri
 import 'package:cajoo/feature/forget_password/presentation/views/enter_otp_view.dart';
 import 'package:cajoo/feature/forget_password/presentation/views/forget_password_view.dart';
 import 'package:cajoo/feature/forget_password/presentation/views/reset_password_view.dart';
+import 'package:cajoo/feature/history/logic/cubit/get_history_cubit.dart';
+import 'package:cajoo/feature/history/presentation/views/history_detales.dart';
 import 'package:cajoo/feature/history/presentation/views/history_view.dart';
 import 'package:cajoo/feature/home/presentation/views/home_view.dart';
 import 'package:cajoo/feature/home/presentation/views/main_view.dart';
@@ -70,7 +72,14 @@ class AppRouter {
       //History View
 
       case Routes.history:
-        return MaterialPageRoute(builder: (_) => const HistoryView());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<GetHistoryCubit>(),
+                  child: const HistoryView(),
+                ));
+      //HistoryDetalesView
+      case Routes.historyDetales:
+        return MaterialPageRoute(builder: (_) => const HistoryDetales());
       //StartUpView
       case Routes.strtup:
         return MaterialPageRoute(builder: (_) => const StartUpView());

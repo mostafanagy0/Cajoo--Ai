@@ -4,6 +4,8 @@ import 'package:cajoo/feature/forget_password/data/repos/forget_password_repo_im
 import 'package:cajoo/feature/forget_password/logic/forget_password_cubit/forgetpassword_cubit.dart';
 import 'package:cajoo/feature/forget_password/logic/reset_password/cubit/reset_password_cubit.dart';
 import 'package:cajoo/feature/forget_password/logic/verify_reset_code/cubit/verify_reset_code_cubit.dart';
+import 'package:cajoo/feature/history/data/repos/history_repo_impl.dart';
+import 'package:cajoo/feature/history/logic/cubit/get_history_cubit.dart';
 import 'package:cajoo/feature/login/data/repos/login_repo_imp.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/profile/data/repos/profile_repo_impl.dart';
@@ -37,7 +39,8 @@ Future<void> setupGetIt() async {
   // forget password
   getIt.registerLazySingleton<ForgetPasswordRepoImp>(
       () => ForgetPasswordRepoImp(apiService: getIt()));
-  getIt.registerFactory<ForgetpasswordCubit>(() => ForgetpasswordCubit(getIt()));
+  getIt
+      .registerFactory<ForgetpasswordCubit>(() => ForgetpasswordCubit(getIt()));
 
   // verify reset code
   getIt.registerFactory<VerifyResetCodeCubit>(
@@ -57,5 +60,10 @@ Future<void> setupGetIt() async {
   // upload image
   getIt.registerLazySingleton<UploadImageRepoImpl>(
       () => UploadImageRepoImpl(dio: getIt()));
-  getIt.registerFactory<ImageDetectionCubit>(() => ImageDetectionCubit(getIt()));
+  getIt
+      .registerFactory<ImageDetectionCubit>(() => ImageDetectionCubit(getIt()));
+  // get history
+  getIt.registerLazySingleton<HistoryRepoImpl>(
+      () => HistoryRepoImpl(apiService: getIt()));
+  getIt.registerFactory<GetHistoryCubit>(() => GetHistoryCubit(getIt()));
 }

@@ -13,4 +13,5 @@ class Routes {
   static const String history = '/history';
   static const String upLodePhoto = '/upLodePhoto';
   static const String strtup = '/strtup';
+  static const String historyDetales = '/historyDetales';
 }

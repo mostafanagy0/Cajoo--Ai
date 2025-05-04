@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "Treatment": MessageLookupByLibrary.simpleMessage("Treatment"),
         "UploadPhoto": MessageLookupByLibrary.simpleMessage("Upload Photo"),
+        "more": MessageLookupByLibrary.simpleMessage("more..."),
         "nodetection": MessageLookupByLibrary.simpleMessage("No detection"),
         "onbordingdescription1": MessageLookupByLibrary.simpleMessage(
             "Snap a photo of your cashew plant, and let AI instantly detect the problem."),

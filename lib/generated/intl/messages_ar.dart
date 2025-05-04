@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Skip": MessageLookupByLibrary.simpleMessage("تخطى"),
         "Treatment": MessageLookupByLibrary.simpleMessage("العلاج"),
         "UploadPhoto": MessageLookupByLibrary.simpleMessage("تحميل الصورة"),
+        "more": MessageLookupByLibrary.simpleMessage(" \'المزيد..."),
         "nodetection": MessageLookupByLibrary.simpleMessage("لا يوجد اكتشاف"),
         "onbordingdescription1": MessageLookupByLibrary.simpleMessage(
             "احصل على نصائح الخبراء للحفاظ على صحة نباتاتك وتعزيز الإنتاجية."),

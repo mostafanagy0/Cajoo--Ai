@@ -9,4 +9,5 @@ class ApiConstants {
   static const String getProfile = 'user/getData/getMe';
   static const String updateProfile = 'user/updateUserData';
   static const String imagedetection = '${baseUrl}process-image';
+  static const String getHistory = 'history';
 }
