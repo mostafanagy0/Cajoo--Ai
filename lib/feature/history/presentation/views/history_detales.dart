@@ -1,24 +1,34 @@
 import 'package:cajoo/core/helpers/extention.dart';
-import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/core/widgets/build_app_bar.dart';
-import 'package:cajoo/feature/uplode_photo/presentation/widgets/custom_segmented_tab_bar.dart';
-import 'package:cajoo/feature/uplode_photo/presentation/widgets/image_uploade_widget.dart';
+import 'package:cajoo/feature/history/data/models/history_model.dart';
+import 'package:cajoo/feature/history/presentation/widgets/detiles_segmanted_tap.dart';
+import 'package:cajoo/feature/history/presentation/widgets/view_history_image.dart';
 import 'package:flutter/material.dart';
 
-class HistoryDetales extends StatelessWidget {
-  const HistoryDetales({super.key});
+class HistoryDetailsView extends StatelessWidget {
+  final HistoryItem historyItem;
+
+  const HistoryDetailsView({
+    super.key,
+    required this.historyItem,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(
-        onBack: () => context.pushNamed(Routes.mainView),
-      ),
-      body: const Column(
+      appBar: buildAppBar(onBack: context.pop),
+      backgroundColor: Colors.white,
+      body: Column(
         children: [
-          ImageUploadWidget(),
-          SizedBox(height: 60),
-          Expanded(child: CustomSegmentedTab()),
+          ViewHistoryImage(
+            historyItem: historyItem,
+          ),
+          const SizedBox(height: 60),
+          Expanded(
+            child: DetailsSegmentedTabs(
+              historyItem: historyItem,
+            ),
+          )
         ],
       ),
     );

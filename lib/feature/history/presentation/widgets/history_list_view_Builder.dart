@@ -3,6 +3,7 @@ import 'package:cajoo/core/routing/routes.dart';
 import 'package:cajoo/feature/history/logic/cubit/get_history_cubit.dart';
 import 'package:cajoo/feature/history/logic/cubit/get_history_state.dart';
 import 'package:cajoo/feature/history/presentation/widgets/history_item_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,27 +31,35 @@ class _HistoryListViewBuilderState extends State<HistoryListViewBuilder> {
           return Center(child: Text(state.message));
         } else if (state is GetHistorySuccess) {
           if (state.history.isEmpty) {
-            return const Center(child: Text('No history available.'));
+            return const Center(child: Text('no history found'));
           }
 
           return ListView.builder(
             itemCount: state.history.length,
             itemBuilder: (context, index) {
+              final historyItem = state.history[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: GestureDetector(
                   onTap: () {
-                    context.pushNamed(Routes.historyDetales);
+                    if (kDebugMode) {
+                      print(
+                          'Navigating to historyDetails with item: ${historyItem.imageUrl}');
+                    }
+                    context.pushNamed(
+                      Routes.historyDetales,
+                      arguments: historyItem,
+                    );
                   },
                   child: HistoryItemWidget(
-                    historyItem: state.history[index],
+                    historyItem: historyItem,
                   ),
                 ),
               );
             },
           );
         } else {
-          return const Center(child: Text('Loading...'));
+          return const Center(child: Text('Loding...'));
         }
       },
     );

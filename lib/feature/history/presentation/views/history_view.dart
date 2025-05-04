@@ -14,7 +14,7 @@ class HistoryView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.only(
             right: isArabic() ? 10 : 24, left: isArabic() ? 24 : 10),
-        child: const HistoryviewBody(),
+        child: const HistoryViewBody(),
       ),
     );
   }
