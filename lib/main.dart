@@ -13,10 +13,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await checkIfLoggedInUser();
   await setupGetIt();
+  String savedLangCode = await cachLangage();
   runApp(BlocProvider(
-    create: (context) => AppLanuageCubit(),
+    create: (context) =>
+        AppLanuageCubit()..changeLanguage(Locale(savedLangCode)),
     child: const CajooApp(),
   ));
+}
+
+Future<String> cachLangage() async {
+  String savedLangCode =
+      await SharedPrefHelper.getString(SharedPrefKeys.languageCode);
+  if (savedLangCode.isEmpty) savedLangCode = 'en';
+  return savedLangCode;
 }
 
 checkIfLoggedInUser() async {
