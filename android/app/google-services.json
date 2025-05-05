@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "508855754228",
+    "project_id": "cajooo",
+    "storage_bucket": "cajooo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508855754228:android:5af64dfe4d7c805bdc2da1",
+        "android_client_info": {
+          "package_name": "com.example.cajoo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqVD1h5n8XW7tBjuiLYIXxQh7EklaUhoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
