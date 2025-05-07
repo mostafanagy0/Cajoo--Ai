@@ -4,7 +4,7 @@ class TranslationHelper {
   static const Map<String, String> _translations = {
     'insect': "الآفات الحشرية",
     'disease': "البياض الدقيقي",
-    'biotic': "الاضطرابات البيئية والتغذوية",
+    'abiotic': "الاضطرابات البيئية والتغذوية",
   };
 
   static String translate(String key) {

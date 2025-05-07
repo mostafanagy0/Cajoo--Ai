@@ -15,6 +15,7 @@ import 'package:cajoo/feature/home/presentation/views/main_view.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/login/presentation/views/login_view.dart';
 import 'package:cajoo/feature/onbording/presentation/views/onbording_view.dart';
+import 'package:cajoo/feature/profile/logic/get_Profile/get_profile_cubit.dart';
 import 'package:cajoo/feature/profile/presentation/views/edite_profile_view.dart';
 import 'package:cajoo/feature/profile/presentation/views/help_and_support_view.dart';
 import 'package:cajoo/feature/profile/presentation/views/profile_view.dart';
@@ -65,7 +66,11 @@ class AppRouter {
       // ProfileView
 
       case Routes.profileview:
-        return MaterialPageRoute(builder: (_) => const ProfileView());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<GetProfileCubit>()..getProfile(),
+                  child: const ProfileView(),
+                ));
       // editeprofile
 
       case Routes.editeprofile:

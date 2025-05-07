@@ -1,29 +1,41 @@
-import 'package:cajoo/core/helpers/shered_pref_helper_.dart';
 import 'package:cajoo/core/theming/styles.dart';
 import 'package:cajoo/core/utils/assets.dart';
+import 'package:cajoo/feature/profile/logic/get_Profile/get_profile_cubit.dart';
+import 'package:cajoo/feature/profile/logic/get_profile/get_profile_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ImageAndNameProfile extends StatefulWidget {
-  const ImageAndNameProfile({
-    super.key,
-  });
+class ImageAndNameProfile extends StatelessWidget {
+  const ImageAndNameProfile({super.key});
 
   @override
-  State<ImageAndNameProfile> createState() => _ImageAndNameProfileState();
+  Widget build(BuildContext context) {
+    return BlocConsumer<GetProfileCubit, GetProfileState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        if (state is GetProfileStateSuccess) {
+          final username = state.data.data.username ?? 'Unknown User';
+          print('Username in ImageAndNameProfile: $username');
+          return _ProfileContent(username: username);
+        } else if (state is GetProfileStateLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is GetProfileStateError) {
+          return Text(
+            'حدث خطأ: ${state.error.message}',
+            style: TextStyles.font32Weight600.copyWith(fontSize: 16),
+          );
+        } else {
+          return const SizedBox(); // Initial or unknown state
+        }
+      },
+    );
+  }
 }
 
-class _ImageAndNameProfileState extends State<ImageAndNameProfile> {
-  String userName = '';
-  @override
-  void initState() {
-    getUserName();
-    super.initState();
-  }
+class _ProfileContent extends StatelessWidget {
+  final String username;
 
-  Future<void> getUserName() async {
-    userName = await SharedPrefHelper.getString('username');
-    setState(() {});
-  }
+  const _ProfileContent({required this.username});
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +54,11 @@ class _ImageAndNameProfileState extends State<ImageAndNameProfile> {
             ),
           ),
         ),
-        const SizedBox(
-          height: 6,
-        ),
+        const SizedBox(height: 6),
         Text(
-          userName,
+          username,
           style: TextStyles.font32Weight600.copyWith(fontSize: 18),
-        )
+        ),
       ],
     );
   }

@@ -10,7 +10,7 @@ import 'package:cajoo/feature/login/data/repos/login_repo_imp.dart';
 import 'package:cajoo/feature/login/logic/cubit/login_cubit.dart';
 import 'package:cajoo/feature/profile/data/repos/profile_repo_impl.dart';
 import 'package:cajoo/feature/profile/logic/cubit/delet_account_cubit.dart';
-import 'package:cajoo/feature/profile/logic/get%20profile/get_profile_cubit.dart';
+import 'package:cajoo/feature/profile/logic/get_Profile/get_profile_cubit.dart';
 import 'package:cajoo/feature/signup/data/repos/signup_repo_imp.dart';
 import 'package:cajoo/feature/signup/logic/cubit/signup_cubit.dart';
 import 'package:cajoo/feature/uplode_photo/data/repos/uploade_image_repo_impl.dart';

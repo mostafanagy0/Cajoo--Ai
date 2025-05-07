@@ -10,7 +10,7 @@ import 'package:cajoo/feature/forget_password/data/models/verify_reset_code_resp
 import 'package:cajoo/feature/history/data/models/history_model.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/models/login_response.dart';
-import 'package:cajoo/feature/profile/data/models/get%20profile/get_profile_model.dart';
+import 'package:cajoo/feature/profile/data/models/get_profile/get_profile_model.dart';
 import 'package:cajoo/feature/signup/data/models/signup_request_body.dart';
 import 'package:cajoo/feature/signup/data/models/signup_response.dart';
 import 'package:cajoo/feature/uplode_photo/data/models/image_detection_response_model.dart';
