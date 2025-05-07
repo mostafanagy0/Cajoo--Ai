@@ -160,11 +160,11 @@ class S {
     );
   }
 
-  /// `Logout`
-  String get Logout {
+  /// `Delete Account`
+  String get DeleteAccount {
     return Intl.message(
-      'Logout',
-      name: 'Logout',
+      'Delete Account',
+      name: 'DeleteAccount',
       desc: '',
       args: [],
     );

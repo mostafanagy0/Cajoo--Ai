@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "CreatAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+        "DeleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "DeletingAccount": MessageLookupByLibrary.simpleMessage(
             "Deleting Your Account Is Done Successfully.."),
         "Diagnosis": MessageLookupByLibrary.simpleMessage("Diagnosis"),
@@ -45,7 +46,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "ImagreetoTheTarms": MessageLookupByLibrary.simpleMessage(
             "I’m agree to The Tarms of Service and Privasy Policy"),
         "Login": MessageLookupByLibrary.simpleMessage("Login"),
-        "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "MyProfile": MessageLookupByLibrary.simpleMessage("My Profile"),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),

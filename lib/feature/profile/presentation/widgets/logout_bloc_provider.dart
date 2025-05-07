@@ -35,7 +35,7 @@ class LogoutBlocProvider extends StatelessWidget {
           }
           return CustomProfileOption(
             icon: Assets.imagesLogoutOutline,
-            title: S.of(context).Logout,
+            title: S.of(context).DeleteAccount,
             onTap: () {
               context.read<DeleteAccountCubit>().deleteAccount();
             },

@@ -57,11 +57,13 @@ class DioFactory {
     dio?.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
-          if (options.method == 'POST' &&
-              options.path.contains('process-image')) {
+          if ((options.method == 'POST' &&
+                  options.path.contains('process-image')) ||
+              (options.method == 'PATCH' &&
+                  options.path.contains('updateUserData'))) {
             options.contentType = Headers.multipartFormDataContentType;
             options.headers['Content-Disposition'] =
-                'form-data; name="image"; filename="image.jpg"';
+                'form-data; name="profileImage"; filename="image.jpg"';
           }
           print("Request headers: ${options.headers}");
           return handler.next(options);

@@ -15,10 +15,6 @@ class UploadImageRepoImpl {
   Future<Either<ServerFailure, ImageDetectionResponseModel>> imageDetection(
       File image) async {
     try {
-      print(
-          "Uploading image: ${image.path}, Size: ${await image.length()} bytes");
-      print("Target URL: ${ApiConstants.imagedetection}");
-
       // تحويل الصورة يدويًا إلى MultipartFile
       final multipartFile = await MultipartFile.fromFile(
         image.path,
@@ -46,12 +42,9 @@ class UploadImageRepoImpl {
 
       // تحويل الاستجابة إلى ImageDetectionResponseModel
       final responseModel = ImageDetectionResponseModel.fromJson(response.data);
-      print("Upload successful: ${responseModel.toJson()}");
       return Right(responseModel);
     } catch (e) {
-      print("Upload image error: $e");
       if (e is DioException) {
-        print("Dio error details: ${e.response?.data}");
         if (e.response?.statusCode == 400) {
           return Left(
               ServerFailure('السيرفر لم يستقبل الصورة أو فشل في معالجتها'));

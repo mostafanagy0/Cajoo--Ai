@@ -11,6 +11,7 @@ import 'package:cajoo/feature/history/data/models/history_model.dart';
 import 'package:cajoo/feature/login/data/models/login_requist_body.dart';
 import 'package:cajoo/feature/login/data/models/login_response.dart';
 import 'package:cajoo/feature/profile/data/models/get_profile/get_profile_model.dart';
+import 'package:cajoo/feature/profile/data/models/update_profile/update_profile_response.dart';
 import 'package:cajoo/feature/signup/data/models/signup_request_body.dart';
 import 'package:cajoo/feature/signup/data/models/signup_response.dart';
 import 'package:cajoo/feature/uplode_photo/data/models/image_detection_response_model.dart';
@@ -62,4 +63,11 @@ abstract class ApiService {
   );
   @GET(ApiConstants.getHistory)
   Future<HistoryResponse> getHistory();
+
+  @PATCH(ApiConstants.updateProfile)
+  @MultiPart()
+  Future<UpdateProfileResponse> updateProfile(
+    @Part(name: 'username') String username,
+    @Part(name: 'profileImage') File profileImage,
+  );
 }

@@ -7,7 +7,7 @@ class ApiConstants {
   static const String verifyResetCode = 'auth/verifyResetCode';
   static const String resetPassword = 'auth/resetPassword';
   static const String getProfile = 'user/getData/getMe';
-  static const String updateProfile = 'user/updateUserData';
+  static const String updateProfile = '${baseUrl}user/updateUserData';
   static const String imagedetection = '${baseUrl}process-image';
   static const String getHistory = 'history';
 }

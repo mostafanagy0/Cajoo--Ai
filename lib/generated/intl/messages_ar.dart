@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("دقة الذكاء الاصطناعي"),
         "ConfirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "DeleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "DeletingAccount":
             MessageLookupByLibrary.simpleMessage("تم حذف حسابك بنجاح.."),
         "Diagnosis": MessageLookupByLibrary.simpleMessage("التشخيص"),
@@ -42,7 +43,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "History": MessageLookupByLibrary.simpleMessage("تاريخ"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "Login": MessageLookupByLibrary.simpleMessage("Login"),
-        "Logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
         "MyProfile": MessageLookupByLibrary.simpleMessage("حسابي"),
         "Name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
