@@ -21,15 +21,15 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
         backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(
-            backgroundColor: const Color(0xFFFFFFFF),
-            automaticallyImplyLeading: false,
-            title: Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                S.of(context).MyProfile,
-                style: TextStyles.font32Weight600.copyWith(fontSize: 18),
-              ),
-            )),
+          backgroundColor: const Color(0xFFFFFFFF),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(
+              S.of(context).MyProfile,
+              style: TextStyles.font32Weight600.copyWith(fontSize: 18),
+            ),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SingleChildScrollView(

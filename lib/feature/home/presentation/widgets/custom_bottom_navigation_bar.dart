@@ -45,8 +45,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             ),
           ),
 
-          // مساحة فاضية للزر الأوسط
-          const SizedBox(width: 60), // دا بيخلي في فراغ للـ FAB
+          const SizedBox(width: 60),
 
           // Profile
           GestureDetector(

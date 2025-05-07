@@ -12,12 +12,6 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       : super(const UpdateProfileState.initial());
 
   Future<void> updateProfile(String username, File imageFile) async {
-    // Logs للتحقق من الصورة
-    print('Image path: ${imageFile.path}');
-    print('Image exists: ${imageFile.existsSync()}');
-    print('Image size: ${imageFile.lengthSync()} bytes');
-    print('Username: $username');
-
     emit(const UpdateProfileState.loading());
     try {
       final request = UpdateProfileRequest(
@@ -27,16 +21,13 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       final result = await profileRepoImpl.updateProfile(request);
       result.fold(
         (failure) {
-          print('Update failed: ${failure.message}');
           emit(UpdateProfileState.updateFailure(failure.message));
         },
         (response) {
-          print('Response data: ${response.toJson()}');
           emit(UpdateProfileState.updateSuccess(response));
         },
       );
     } catch (e) {
-      print('Detailed error: $e');
       emit(UpdateProfileState.updateFailure("خطأ أثناء تحميل الصورة: $e"));
     }
   }

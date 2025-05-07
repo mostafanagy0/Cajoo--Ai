@@ -15,11 +15,9 @@ class GetProfileCubit extends Cubit<GetProfileState> {
 
     result.fold(
       (failure) {
-        print('Error in Cubit: ${failure.message}');
         emit(GetProfileState.error(error: failure));
       },
       (profileData) {
-        print('Profile Data in Cubit: $profileData');
         emit(GetProfileState.success(profileData));
       },
     );

@@ -1,9 +1,12 @@
+import 'package:cajoo/core/di/dependancy_ingection.dart';
 import 'package:cajoo/core/helpers/shered_pref_helper_.dart';
 import 'package:cajoo/core/theming/colors.dart';
 import 'package:cajoo/core/utils/assets.dart';
 import 'package:cajoo/feature/home/presentation/widgets/hello_widget.dart';
 import 'package:cajoo/feature/home/presentation/widgets/uplode_photo_widget.dart';
+import 'package:cajoo/feature/profile/logic/get_Profile/get_profile_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -39,7 +42,10 @@ class _HomeViewState extends State<HomeView> {
                 fit: BoxFit.cover,
               ),
             ),
-            HelloWidget(userName: userName),
+            BlocProvider(
+              create: (context) => getIt<GetProfileCubit>()..getProfile(),
+              child: const HelloWidget(),
+            ),
             const UpLodePhotoWidget(),
           ],
         ));

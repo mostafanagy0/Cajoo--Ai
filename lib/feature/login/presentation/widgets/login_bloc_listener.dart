@@ -22,6 +22,7 @@ class LoginBlocListener extends StatelessWidget {
           loading: () {
             showDialog(
               context: context,
+              barrierDismissible: false, // منع إغلاق الـ dialog بالضغط خارجها
               builder: (context) => const Center(
                 child: CircularProgressIndicator(
                   color: AppColor.primaryColor,
@@ -31,8 +32,11 @@ class LoginBlocListener extends StatelessWidget {
           },
           success: (loginResponse) {
             context.pop();
-            context.pushNamedAndRemoveUntil(Routes.mainView,
-                predicate: (route) => route.settings.name == null);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.mainView,
+              (route) => false,
+            );
           },
           error: (serverFailure) {
             setupErrorState(context, serverFailure);

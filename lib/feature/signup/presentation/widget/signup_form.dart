@@ -71,7 +71,9 @@ class _SignupFormState extends State<SignupForm> {
           CustomTextFormFeild(
             controller: signupCubit.confirmPasswordController,
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isPasswordValid(value)) {
                 return S.of(context).Pleaseenteravalidpassword;
               }
               return null;

@@ -15,7 +15,7 @@ class ImageAndNameProfile extends StatelessWidget {
       builder: (context, state) {
         if (state is GetProfileStateSuccess) {
           final username = state.data.data.username ?? 'Unknown User';
-          print('Username in ImageAndNameProfile: $username');
+
           return _ProfileContent(username: username);
         } else if (state is GetProfileStateLoading) {
           return const Center(child: CircularProgressIndicator());
